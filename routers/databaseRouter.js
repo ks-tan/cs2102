@@ -1,7 +1,7 @@
 const pg = require('pg');
 const express = require('express');
 const constants = require('../constants');
-const itemQuery = require('../database/queries/items');
+const itemQuery = require('../database/queryStatements/items');
 
 const router = express.Router();
 const connectionString = constants.DB_CONNECTION;
