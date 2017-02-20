@@ -7,11 +7,11 @@ const client = new pg.Client(connectionString);
 client.connect();
 
 const queryStatement = 
-        'INSERT INTO category VALUES(\'Art\', \'This is an arty farty category\');'
-    +   'INSERT INTO category VALUES(\'Games\', \'By Gamers, for Gamers\');'
-    +   'INSERT INTO category VALUES(\'Music\', \'For your ears only\');'
-    +   'INSERT INTO category VALUES(\'Food\', \'Yummy yummy in my tummy\');'
-    +   'INSERT INTO category VALUES(\'Others\', \'Full of random stuff\');'
+        'INSERT INTO account VALUES(DEFAULT, \'dartteon\', \'channnn\', \'i am a nerd!\', 24, \'MALE\', \'dartteon@gmail.com\', \'Singapore\', \'ADMIN\');'
+    +   'INSERT INTO account VALUES(DEFAULT, \'chl92\', \'POH HUI LING\', \'FUND ME PLZ\', 29, \'FEMALE\', \'\', \'Singapore\', \'USER\');'
+    +   'INSERT INTO account VALUES(DEFAULT, \'xx00\', \'XIE XIN\', \'GAMES GAMES GAMES\', 17, \'FEMALE\', \'xiexin2011@gmail.com\', \'\', \'USER\');'
+    +   'INSERT INTO account VALUES(DEFAULT, \'aneja92\', \'VARGHESE ANEJA\', \'cool handsome dude\', 25, \'MALE\', \'vargheseaneja1992@msn.com\', \'Singapore\', \'USER\');'
+    +   'INSERT INTO account VALUES(DEFAULT, \'tym89\', \'TAY YONG MING\', \'i have no idea what i am doing\', 28, \'MALE\', \'tayyongming1989@gmail.com\', \'Singapore\', \'USER\');'
     ;
 
 const query1 = client.query(

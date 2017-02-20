@@ -7,11 +7,8 @@ const client = new pg.Client(connectionString);
 client.connect();
 
 const queryStatement = 
-        'INSERT INTO category VALUES(\'Art\', \'This is an arty farty category\');'
-    +   'INSERT INTO category VALUES(\'Games\', \'By Gamers, for Gamers\');'
-    +   'INSERT INTO category VALUES(\'Music\', \'For your ears only\');'
-    +   'INSERT INTO category VALUES(\'Food\', \'Yummy yummy in my tummy\');'
-    +   'INSERT INTO category VALUES(\'Others\', \'Full of random stuff\');'
+        'INSERT INTO project VALUES(DEFAULT, \'Journey to the Moon\', \'Art\', NULL, \'Remake of the first ever movie\', \'2017-02-20\', \'2018-02-20\', \'1000.00\', 1);'
+    +   'INSERT INTO project VALUES(DEFAULT, \'By Gamers, for Gamers\', \'Games\', NULL, \'OVERTHROW VALVE!!!\', \'2017-12-15\', \'2019-12-15\', \'100000.00\', 4);'
     ;
 
 const query1 = client.query(
