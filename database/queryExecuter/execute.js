@@ -10,7 +10,7 @@ exports.addAccount = function(username, full_name, description, age,
         console.log('attemping to add account ' + username);
 
         client.connect();
-        client.query(QUERY_STATEMENTS.ADD_ACCOUNT
+        var query = client.query(QUERY_STATEMENTS.ADD_ACCOUNT
             , [username, full_name, description, age, gender, email, country, role], 
             function (err, result) {
                 console.log ("finished query");
@@ -22,6 +22,7 @@ exports.addAccount = function(username, full_name, description, age,
                     if (err) throw err;
                 });
             });
+        return query;
 }
 
 exports.addProject = function(title, category, image_url, description,
