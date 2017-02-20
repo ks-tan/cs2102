@@ -1,0 +1,34 @@
+.main-banner {
+  height: 200px;
+  background-color: #BF8A9A;
+  padding: 30px;
+  text-align: center;
+  color: #fff;
+}
+  .main-banner-title {
+    margin-bottom: 30px;
+  }
+.featured {
+  padding: 40px 0 40px 0;
+}
+  .carousel-featured-container {
+    padding-bottom: 45px;
+  }
+
+.browse {
+  padding: 40px 0 60px 0 ;
+  border-top: 1px solid #DCDEDD;
+}
+  .browse-search-container {
+    position: relative;
+    margin-bottom: 25px;
+  }
+  .browse-advancesearch {
+    margin-top: 3px;
+    font-size: 12px;
+    color: #BF8A9A;
+    font-weight: bold;
+  }
+  .browse-advancesearch>span {
+    cursor: pointer;
+  }

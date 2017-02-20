@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Indie Starter - Search Result</title>
+
+  <% include ../partials/header %>
+  <link rel="stylesheet" href="styles/search.css">
+</head>
+<body>
+  <% include ../partials/navbar %>
+
+  <div class="search-banner">
+    <div class="container">
+      <div class="search-banner-title">Browse Projects</div>
+      <div class="search-banner-input-container">
+        <div class="search-input">
+          <input type="text" class="form-control search-input-form"
+            placeholder="Search project..">
+          <span class="glyphicon glyphicon-search search-input-logo"></span>
+        </div>
+      </div>
+      <h4>Search in</h4>
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="search-category-item active">
+            Technology
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="search-category-item">
+            Technology
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="search-category-item">
+            Technology
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container search-result">
+    <div class="section-header">
+      <div class="section-title">Search Results</div>
+      <div class="section-nav">
+        <span>Sort by</span>
+        <div class="dropdown" style="display: inline-block;">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Relevance
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+            <li><a href="">Relevance</a></li>
+            <li><a href="">Name</a></li>
+            <li><a href="">Start date</a></li>
+            <li><a href="">End date</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="projectcard">
+          <div class="projectcard-thumbnail">
+            <img src="https://ksr-ugc.imgix.net/assets/015/162/643/7fd489074e7b5a4f0f0119d0eb01de25_original.jpg?w=338&h=190&fit=fill&bg=000000&v=1484358185&auto=format&q=92&s=c9ea094416b863bc98df7c5434942410" alt="" class="projectcard-thumbnail-img">
+          </div>
+          <div class="projectcard-content">
+            <div class="project-title">Project 1</div>
+            <div class="project-owner">Andhieka, Singapore</div>
+            <div class="project-description">
+              sjhdfjhsjkdhfjkhdsh kjfhjkshdjfhjsdhjfhjkshd kfhhsdhfkhksdkfjhskjdhjkf skjdhfjkshd ksjdhfjkshd jkshdfjkhds
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3">
+        <div class="projectcard">
+          <div class="projectcard-thumbnail">
+            <img src="https://ksr-ugc.imgix.net/assets/015/162/643/7fd489074e7b5a4f0f0119d0eb01de25_original.jpg?w=338&h=190&fit=fill&bg=000000&v=1484358185&auto=format&q=92&s=c9ea094416b863bc98df7c5434942410" alt="" class="projectcard-thumbnail-img">
+          </div>
+          <div class="projectcard-content">
+            <div class="project-title">Project 1</div>
+            <div class="project-owner">Andhieka, Singapore</div>
+            <div class="project-description">
+              sjhdfjhsjkdhfjkhdsh kjfhjkshdjfhjsdhjfhjkshd kfhhsdhfkhksdkfjhskjdhjkf skjdhfjkshd ksjdhfjkshd jkshdfjkhds
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% include ../partials/footer %>
+  <% include ../partials/scripts %>
+</body>
+</html>

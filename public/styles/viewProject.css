@@ -1,0 +1,39 @@
+/*
+  pale-pink: #D8CCCE
+  pink: #BF8A9A
+  light-pink: #BD99A5
+  light-grey: #F2EFED
+  black : #0C0F0D
+*/
+
+.title {
+	font-size: 50px;
+}
+
+.category {
+	color: white;
+	font-size: 30px;
+	background-color: #BF8A9A;
+	display: inline-block;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+.funding-status {
+	border-radius: 10px;
+    border-style: solid;
+    border-color: #D8CCCE;
+    text-align: center;
+}
+
+.latest-pledge {
+	text-align: center;
+}
+
+.pledge-modal {
+	text-align: center;
+}
+
+.plede-amount {
+	border-style: none;
+}

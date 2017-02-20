@@ -3,11 +3,143 @@
 <head>
 	<title>IndieStarter</title>
   <% include ../partials/header %>
+
+  <link rel="stylesheet" href="styles/home.css">
 </head>
 <body>
   <% include ../partials/navbar %>
-	<h1>Welcome to IndieStarter!</h1>
+  <div class="main-banner">
+    <h2 class="main-banner-title">Start a new project!</h2>
+    <button class="btn btn-white btn-lg"
+      data-toggle="modal" data-target="#loginModal">Login</button>
+  </div>
+  <div class="container-fluid featured">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-title">Featured Projects</div>
+        <div class="section-nav"></div>
+      </div>
+    </div>
 
+    <div id="carousel-featured" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-featured" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-featured" data-slide-to="1"></li>
+      </ol>
+
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <div class="container carousel-featured-container">
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="projectcard">
+                  <div class="projectcard-thumbnail">
+                    <img src="https://ksr-ugc.imgix.net/assets/015/162/643/7fd489074e7b5a4f0f0119d0eb01de25_original.jpg?w=338&h=190&fit=fill&bg=000000&v=1484358185&auto=format&q=92&s=c9ea094416b863bc98df7c5434942410" alt="" class="projectcard-thumbnail-img">
+                  </div>
+                  <div class="projectcard-content">
+                    <div class="project-title">Project 1</div>
+                    <div class="project-owner">Andhieka, Singapore</div>
+                    <div class="project-description">
+                      sjhdfjhsjkdhfjkhdsh kjfhjkshdjfhjsdhjfhjkshd kfhhsdhfkhksdkfjhskjdhjkf skjdhfjkshd ksjdhfjkshd jkshdfjkhds
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="projectcard"></div>
+              </div>
+              <div class="col-lg-4">
+                <div class="projectcard"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="container carousel-featured-container">
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="projectcard">
+                  <div class="projectcard-thumbnail">
+                    <img src="https://ksr-ugc.imgix.net/assets/015/162/643/7fd489074e7b5a4f0f0119d0eb01de25_original.jpg?w=338&h=190&fit=fill&bg=000000&v=1484358185&auto=format&q=92&s=c9ea094416b863bc98df7c5434942410" alt="" class="projectcard-thumbnail-img">
+                  </div>
+                  <div class="projectcard-content">
+                    <div class="project-title">Project 4</div>
+                    <div class="project-owner">Andhieka, Singapore</div>
+                    <div class="project-description">
+                      sjhdfjhsjkdhfjkhdsh kjfhjkshdjfhjsdhjfhjkshd kfhhsdhfkhksdkfjhskjdhjkf skjdhfjkshd ksjdhfjkshd jkshdfjkhds
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="projectcard"></div>
+              </div>
+              <div class="col-lg-4">
+                <div class="projectcard"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <a class="left carousel-control" href="#carousel-featured" role="button"
+        data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#carousel-featured" role="button"
+        data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+
+  </div>
+  <div class="browse">
+    <div class="container ">
+      <div class="section-header">
+        <div class="section-title">Browse Projects</div>
+      </div>
+      <div class="browse-search-container">
+        <div class="search-input">
+          <input type="text" class="browse-search-input form-control search-input-form"
+            placeholder="Search project..">
+          <span class="glyphicon glyphicon-search search-input-logo"></span>
+        </div>
+<!--         <div class="browse-advancesearch">
+          <span>Advance Search</span>
+        </div> -->
+      </div>
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="categorycard">
+            <div class="categorycard-content">
+              Technology
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="categorycard">
+            <div class="categorycard-content">
+              Gardening
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="categorycard">
+            <div class="categorycard-content">
+              Food
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% include ../partials/footer %>
   <% include ../partials/scripts %>
 </body>
 </html>

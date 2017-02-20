@@ -1,0 +1,17 @@
+/*
+  pale-pink: #D8CCCE
+  pink: #BF8A9A
+  light-pink: #BD99A5
+  light-grey: #F2EFED
+  black : #0C0F0D
+*/
+
+.project-add {
+	font-size: 30px;
+	position: relative;
+	float: left;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
