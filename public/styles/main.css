@@ -1,8 +1,10 @@
 /*pale-pink: #D8CCCE
 pink: #BF8A9A
+dark-pink: #946B77;
 light-pink: #BD99A5
 light-grey: #F2EFED
-black : #0C0F0D*/
+black : #0C0F0D
+grey: #DCDEDD */
 
  body {
   padding-top: 50px;
@@ -22,8 +24,7 @@ black : #0C0F0D*/
     height: 180px;
   }
     .projectcard-thumbnail-img {
-      max-width: 100%;
-      height: auto;
+      width: 100%;
     }
 
   .projectcard-content {
@@ -42,3 +43,70 @@ black : #0C0F0D*/
     font-size: 12px;
 
   }
+
+.categorycard {
+  border-radius: 6px;
+  height: 140px;
+  background: rgba(191,138,154,0.6);
+  position: relative;
+}
+  .categorycard-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+  }
+
+button.btn.btn-lg {
+  padding: 12px 20px;
+}
+.btn-pink {
+  background-color: #BF8A9A;
+  color: #fff;
+}
+.btn-pink:hover {
+  color: #fff;
+  background-color: #A17482;
+}
+
+.search-input {
+  position: relative;
+}
+  .search-input-form {
+    padding-left: 30px;
+    border-radius: 17px;
+  }
+  .search-input-logo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+
+
+/* BOOTSTRAP CAROUSEL OVERRIDE */
+.carousel-control {
+  color: #0C0F0D;
+}
+  .carousel-control:hover, .carousel-control:focus {
+    color: #0C0F0D;
+  }
+.carousel-control.left {
+  background: none;
+}
+.carousel-control.right {
+  background: none;
+}
+.carousel-indicators {
+  bottom: 0 !important;
+}
+  .carousel-indicators li {
+    border: 1px solid #946B77;
+  }
+  .carousel-indicators .active {
+    background-color: #BF8A9A;
+  }
+

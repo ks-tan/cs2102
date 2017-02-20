@@ -1,0 +1,47 @@
+.main-banner {
+  height: 200px;
+  background-color: #D8CCCE;
+  padding: 30px;
+  text-align: center;
+  color: #fff;
+}
+  .main-banner-title {
+    margin-bottom: 30px;
+  }
+.featured {
+  padding: 40px 0 40px 0;
+}
+  .carousel-featured-container {
+    padding-bottom: 45px;
+  }
+
+.section-header {
+  padding: 10px 0 20px 0;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+  .section-title {
+    font-size: 22px;
+    font-weight: bold;
+    padding: 8px 0;
+  }
+  .section-nav {
+
+  }
+
+.browse {
+  padding: 40px 0 60px 0 ;
+  border-top: 1px solid #DCDEDD;
+}
+  .browse-search-container {
+    position: relative;
+    margin-bottom: 25px;
+  }
+  .browse-advancesearch {
+    margin-top: 3px;
+    font-size: 12px;
+    color: #BF8A9A;
+    font-weight: bold;
+  }
