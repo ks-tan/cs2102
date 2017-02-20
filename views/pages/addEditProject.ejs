@@ -2,8 +2,50 @@
 <html>
 <head>
 	<title>IndieStarter</title>
+	<% include ../partials/header %>
+	<script src="scripts/addEditProject.js"></script>
+	<link rel="stylesheet" href="styles/addEditProject.css">
 </head>
 <body>
-	<h1>Add/Edit Project!</h1>
+  <% include ../partials/navbar %>
+  <br>
+  <div class="container">
+  	<div class="row">
+  		<div class="title col-md-9">Edit project</div>
+  		<div class="col-md-3">
+	  		<button class="btn">Save as draft</button>
+				<button class="btn">Publish</button>
+			</div>
+  	</div><br>
+  	<form action="/addEditProject" method="post">
+  		<div class="form-group">
+				<label>Title</label>
+				<input class="form-control" placeholder="Enter title here" name="title"></input>
+			</div>
+			<div class="form-group">
+				<label>Description</label>
+				<textarea class="form-control" type="text" name="description" placeholder="Start writing..."></textarea>
+			</div>
+			<div class="form-group">
+				<label>End Date</label>
+				<input class="form-control" placeholder="ddmmyyyy" name="date"></input>
+			</div>
+			<div class="form-group">
+		    <label>Category</label>
+		    <select class="form-control" name="category">
+		      <option>Category 1</option>
+		      <option>Category 2</option>
+		      <option>Category 3</option>
+		      <option>Category 4</option>
+		      <option>Category 5</option>
+		    </select>
+			</div><br>
+			<div class="form-group">
+				<label>Amount seeking</label>
+				<input class="form-control" placeholder="USD 0.00" name="amount_sought"></input>
+			</div>
+		</form>
+  </div>
+	<% include ../partials/scripts %>
 </body>
 </html>
