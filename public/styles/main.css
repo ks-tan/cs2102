@@ -1,0 +1,40 @@
+// pale-pink: #D8CCCE
+// pink: #BF8A9A
+// light-pink: #BD99A5
+// light-grey: #F2EFED
+// black : #0C0F0D
+
+.projectcard {
+  background-color: #fff;
+  border: 1px solid #F2EFED;
+  color : #0C0F0D;
+  border-radius: 6px;
+  height: 440px;
+}
+  .projectcard-thumbnail {
+    border-radius: 6px 6px 0 0;
+    overflow: hidden;
+    position: relative;
+    height: 180px;
+  }
+    .projectcard-thumbnail-img {
+      max-width: 100%;
+      height: auto;
+    }
+
+  .projectcard-content {
+    padding: 10px;
+  }
+  .project-title {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 2px;
+  }
+  .project-owner {
+    margin-bottom: 10px;
+    font-size: 12px;
+  }
+  .project-description {
+    font-size: 12px;
+
+  }
