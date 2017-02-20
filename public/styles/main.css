@@ -10,6 +10,22 @@ grey: #DCDEDD */
   padding-top: 50px;
  }
 
+ .section-header {
+  padding: 10px 0 20px 0;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+  .section-title {
+    font-size: 22px;
+    font-weight: bold;
+    padding: 8px 0;
+  }
+  .section-nav {
+
+  }
+
 .projectcard {
   background-color: #fff;
   border: 1px solid #F2EFED;
