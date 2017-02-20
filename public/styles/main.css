@@ -1,8 +1,12 @@
-// pale-pink: #D8CCCE
-// pink: #BF8A9A
-// light-pink: #BD99A5
-// light-grey: #F2EFED
-// black : #0C0F0D
+/*pale-pink: #D8CCCE
+pink: #BF8A9A
+light-pink: #BD99A5
+light-grey: #F2EFED
+black : #0C0F0D*/
+
+ body {
+  padding-top: 50px;
+ }
 
 .projectcard {
   background-color: #fff;
