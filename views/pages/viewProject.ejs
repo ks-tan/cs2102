@@ -2,8 +2,62 @@
 <html>
 <head>
 	<title>IndieStarter</title>
+	<% include ../partials/header %>
+	<link rel="stylesheet" href="styles/viewProject.css">
 </head>
 <body>
-	<h1>View Project!</h1>
+	<% include ../partials/navbar %>
+	<br>
+	<div class="container">
+		<div class="row">
+			<img class="image col-md-6" src="https://ksr-ugc.imgix.net/assets/015/261/638/11e65a8474a654871663fb3c582e06fd_original.tif?w=680&fit=max&v=1485200241&auto=format&q=92&s=2a9de9204152842744d993a20756bf5c">
+			<div class="col-md-6">
+				<div class="container">
+					<div class="row">
+						<div class="title">Awesome Project</div>
+						<div class="category">Technology</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-md-3 funding-status">
+							<h2>Funding Status:</h2>
+							<h1 style="color: #BF8A9A">Success</h1>
+							<h3>1024% funded</h3>
+							<h4>$20,000 / $10,000 goal</h4>
+						</div>
+						<div class="col-md-3 latest-pledge">
+							<h4>Latest Pledge:</h4>
+							<h3>$300</h3>
+							<h4>From Johnny</h4>
+							<button class="btn">See all backers</button><br><br>
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".pledge-modal">Pledge Now</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="modal fade pledge-modal" tabindex="-1" role="dialog" aria-labelledby="pledge-modal" aria-hidden="true">
+		  <div class="modal-dialog modal-md">
+		    <div class="modal-content">
+		      <h2>You (@your_username)</h2>
+		      <h3>are pledging</h3>
+		      <form action="/pledge" method="post">
+		      	<input class="form-control pledge-amount" placeholder="USD 0.00" name="amount"></input><br>
+		     		<button type="submit" class="btn"><h3>Pledge Now</h3></button><br><br>
+		     	</form>
+		    </div>
+		  </div>
+		</div>
+		<div class="row">
+			<label>Description</label>
+			<p>I'm working to masterfully craft every track on this album, and am doing most of the production myself to remind the world that music is meant to bring people together, to share stories and inspire change. Art and music are forms of resistance. These are songs of movements, pain, loss, life, love, and the world. I'm telling my story using music that people will be able to relate to. I want this music to inspire you, to wake people up, make you dance and show you that hip hop can be a tool for creating change.</p>
+		</div>
+		<div class="row">
+			<label>About the Owner</label>
+			<p>I'm working to masterfully craft every track on this album, and am doing most of the production myself to remind the world that music is meant to bring people together, to share stories and inspire change. Art and music are forms of resistance. These are songs of movements, pain, loss, life, love, and the world. I'm telling my story using music that people will be able to relate to. I want this music to inspire you, to wake people up, make you dance and show you that hip hop can be a tool for creating change.</p>
+		</div>
+	</div>
+	<% include ../partials/scripts %>
 </body>
 </html>
