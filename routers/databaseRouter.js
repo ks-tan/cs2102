@@ -2,10 +2,30 @@ const pg = require('pg');
 const express = require('express');
 const constants = require('../constants');
 const itemQuery = require('../database/queryStatements/items');
+const QUERY_EXECUTER = require('../database/queryExecuter/execute.js');
 
 const router = express.Router();
 const connectionString = constants.DB_CONNECTION;
 
+router.post('/account', function (req, res, next) {
+  
+  var username = req.body.username;
+  var fullname = req.body.fullname;
+  var description = (req.body.description) ? req.body.description : '';
+  var age = req.body.age;
+  var gender = req.body.gender;
+  var email = req.body.email;
+  var country = (req.body.country) ? req.body.country : '';
+  var role = req.body.role;
+  var promise = QUERY_EXECUTER.addAccount(username, fullname, description, age, gender, email, country, role);
+  promise.then(function() {
+    res.redirect('/');  //redirect back to home
+  });
+});
+
+/*
+  EVERYTHING BELOW HERE IS DUMMY TO BE DELETED
+*/
 
 router.get('/items', function (req, res, next) {
 	submitItemQuery(req, res, itemQuery.GET_ALL);
@@ -15,6 +35,7 @@ router.get('/items', function (req, res, next) {
 router.post('/insertItem', function (req, res, next) {
   submitItemQuery(req, res, itemQuery.INSERT);
 });
+
 
 
 function submitItemQuery(req, res, queryString) {

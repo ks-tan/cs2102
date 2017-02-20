@@ -16,7 +16,6 @@ app.use(bodyParser.urlencoded({ extended: true })); //for retrieving form data
 
 //set routers
 app.use('/', mainRouter);
-app.use('/db', dbRouter);
 
 app.listen(app.get('port'), function(){
 	console.log("Server has started running....");
