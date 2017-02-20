@@ -68,10 +68,19 @@ button.btn.btn-lg {
   background-color: #BF8A9A;
   color: #fff;
 }
-.btn-pink:hover {
-  color: #fff;
-  background-color: #A17482;
+  .btn-pink:hover {
+    color: #fff;
+    background-color: #A17482;
+  }
+
+.btn-white {
+  background-color: #fff;
+  color: #A17482;
 }
+  .btn-white:hover {
+    color: #A17482;
+    background-color: #F2EFED;
+  }
 
 .search-input {
   position: relative;
