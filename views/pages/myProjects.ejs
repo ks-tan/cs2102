@@ -2,8 +2,38 @@
 <html>
 <head>
 	<title>IndieStarter</title>
+	<% include ../partials/header %>
+	<link rel="stylesheet" href="styles/myProjects.css">
 </head>
 <body>
-	<h1>My Projects!</h1>
+  <% include ../partials/navbar %>
+  <div class = "container">
+  	<div class="row">
+			<a class="col-md-4" href="/addEditProject">
+			  	<div class="projectcard">
+			  		<div class="projectcard-content">
+			  			<div class="project-title">Test Project</div>
+			  			<div class="project-owner">Tester 123</div>
+			  			<div class="project-description">Test test test test</div>
+			  		</div>
+			  	</div>
+			  </a>
+			  <a class="col-md-4" href="/addEditProject">
+			  	<div class="projectcard">
+			  		<div class="projectcard-content">
+			  			<div class="project-title">Test Project</div>
+			  			<div class="project-owner">Tester 123</div>
+			  			<div class="project-description">Test test test test</div>
+			  		</div>
+			  	</div>
+			  </a>
+				<a class="col-md-4" href="/addEditProject">
+			  	<div class="projectcard">
+			 			<div class="project-add">+ new project</div> 		
+			  	</div>
+			  </a>
+  	</div>
+  </div>
+	<% include ../partials/scripts %>
 </body>
 </html>

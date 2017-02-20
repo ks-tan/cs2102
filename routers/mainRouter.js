@@ -5,8 +5,8 @@ router.get('/', function(req, res) {
   res.render('pages/main');
 });
 
-router.get('/addProject', function(req, res) {
-  res.render('pages/addProject');
+router.get('/addEditProject', function(req, res) {
+  res.render('pages/addEditProject');
 });
 
 router.get('/viewProject', function(req, res) {
