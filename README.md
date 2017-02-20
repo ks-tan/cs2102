@@ -10,9 +10,9 @@ Test-build for pre-alpha demo. Here are the steps to test if web server and data
 Create/start pgsl server at:
 > postgres://localhost:5432/cs2102
 
-#### Step 2. Create 'items' table
-I am using 'items' as a test table. This can be changed later. To create test table, run:
-> $ node database/schemas/items.js
+#### Step 2. Create Schema with various tables
+Run this script and all tables should be created in the database
+> $ node database/schemas/createSchema.js
 
 #### Step 3. Start server
 `app.js` is the entry point. To start server, run:
