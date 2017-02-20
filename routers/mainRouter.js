@@ -24,6 +24,13 @@ router.get('/projects/:id', function(req, res) {
   res.render('pages/viewProject');
 });
 
+router.get('/projects/:id/edit', function(req, res) {
+  // Pass a context to the templating engine
+  // so that it knows to render a pre-populated form
+  // instead of a blank one.
+  res.render('pages/addEditProject');
+});
+
 router.get('/my-projects', function(req, res) {
   res.render('pages/myProjects');
 });
