@@ -26,6 +26,9 @@ app.listen(app.get('port'), function(){
 	// 'MALE', 'baron504@gmail.com', 'Singapore', 'ADMIN');
 
 	//Example to add new project
-	// queryExecuter.addProject('myProject10', 'Art', '','fun thing',
-	// 	new Date(), new Date(), 9001.00, 1);
+	// queryExecuter.addProject('myProject101', 'Art', '','fun thing',
+	// 	new Date(), new Date(), 9001.00, 'dartteon');
+
+	//Example to add fund
+	// queryExecuter.addFund(1, 'dartheon', 100.99, new Date());
 });
