@@ -105,7 +105,7 @@ router.post('/project', function (req, res, next) {
     DECIMAL           : amount_sought
     string            : owner_account (must be valid username) !THIS IS IGNORED SINCE OWNER CANNOT BE CHANGED!
     ============================================================*/
-router.post('/project-update', function (req, res, next) {
+router.post('/project/update', function (req, res, next) {
   var projectId = req.body.id;
   var title = req.body.title;
   var category = req.body.category;
