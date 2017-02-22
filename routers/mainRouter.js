@@ -62,6 +62,7 @@ router.post('/account', function (req, res, next) {
   });
 });
 
+
 /*  ============================================================
     Create (and edit? TBI?) new Project
     @Params
@@ -87,6 +88,37 @@ router.post('/project', function (req, res, next) {
   var owner_account = req.body.owner_account.toLowerCase();
 
   var promise = QUERY_EXECUTER.addProject(title, category, image_url, description, start_date, end_date, amount_sought, owner_account);
+  promise.then(function() {
+    res.redirect('/');  //redirect back to home
+  });
+});
+
+/*  ============================================================
+    Create (and edit? TBI?) new Project
+    @Params
+    string            : title
+    string            : category
+    string            : image_url           
+    string            : description
+    DATE              : start_date(use new Date())
+    DATE              : end_date
+    DECIMAL           : amount_sought
+    string            : owner_account (must be valid username) !THIS IS IGNORED SINCE OWNER CANNOT BE CHANGED!
+    ============================================================*/
+router.post('/project-update', function (req, res, next) {
+  var projectId = req.body.id;
+  var title = req.body.title;
+  var category = req.body.category;
+  var image_url = (req.body.image_url) ? req.body.image_url : '';
+  var description = req.body.description;
+
+  var start_date = req.body.start_date;
+  var end_date = req.body.end_date;
+  var amount_sought = req.body.amount_sought;
+  var owner_account = req.body.owner_account.toLowerCase();
+
+  var promise = QUERY_EXECUTER.updateProject(projectId, title, category, 
+    image_url, description, start_date, end_date, amount_sought);
   promise.then(function() {
     res.redirect('/');  //redirect back to home
   });

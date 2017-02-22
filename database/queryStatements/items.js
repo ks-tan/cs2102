@@ -20,3 +20,12 @@ exports.ADD_FUND =
     'INSERT INTO funds' +
     ' (id, project, account, amount, time)' +
     ' VALUES (DEFAULT, $1, (SELECT a.id FROM account a WHERE a.username = $2), $3, $4)';
+
+// exports.UPDATE_PROJECT =
+//     'UPDATE project ' + 
+//     ' SET title = $1, category = $2, image_url = $3, description = $4, start_date = $5, end_date = $6, amount_sought = $7, owner_account = $8' +
+//     ' WHERE id = $9';
+exports.UPDATE_PROJECT =
+    'UPDATE project ' + 
+    ' SET title = $1, category = $2, image_url = $3, description = $4, start_date = $5, end_date = $6, amount_sought = $7' +
+    ' WHERE id = $8';

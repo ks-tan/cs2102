@@ -45,6 +45,27 @@ exports.addProject = function (title, category, image_url, description,
     return query;
 }
 
+exports.updateProject = function (id, title, category, image_url, description,
+    start_date, end_date, amount_sought) {
+    console.log('attemping to edit project ' + title);
+
+    client.connect();
+    var query = client.query(QUERY_STATEMENTS.UPDATE_PROJECT
+        // , [title, category, image_url, description, start_date, end_date, amount_sought, owner_account, id],
+        , [title, category, image_url, description, start_date, end_date, amount_sought, id],
+        function (err, result) {
+            console.log("finished query");
+            if (err) throw err;
+            // just print the result to the console
+            console.log(result.rows[0]); // outputs: { name: 'brianc' }
+            // disconnect the client
+            client.end(function (err) {
+                if (err) throw err;
+            });
+        });
+    return query;
+}
+
 exports.addFund = function (projectId, username, amount, date) {
     console.log('attemping to fund to projectId ' + projectId + ' from user ' + username);
 
