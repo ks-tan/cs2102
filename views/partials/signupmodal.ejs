@@ -8,39 +8,52 @@
         <h4 class="modal-title">SIGN UP</h4>
       </div>
       <div class="modal-body">
-        <form>
+        <form action="/account" method="post">
           <div class="form-group">
             <label for="suUsername" class="control-label">Username</label>
-            <input type="text" class="form-control" id="suUsername"
+            <input type="text" class="form-control" id="suUsername" name="username"
               placeholder="Enter your username">
           </div>
           <div class="form-group">
             <label for="suFullname" class="control-label">Full Name</label>
-            <input type="text" class="form-control" id="suFullname"
+            <input type="text" class="form-control" id="suFullname" name="fullname"
               placeholder="Enter your full name">
           </div>
           <div class="form-group">
             <label for="suEmail" class="control-label">Email</label>
-            <input type="email" class="form-control" id="suEmail"
+            <input type="email" class="form-control" id="suEmail" name="email"
               placeholder="Enter your email">
           </div>
           <div class="form-group">
             <label for="suAge" class="control-label">Age</label>
-            <input type="number" class="form-control" id="suAge"
+            <input type="number" class="form-control" id="suAge" name="age"
               placeholder="Enter your age">
           </div>
           <div class="form-group">
+            <label for="suCountry" class="control-label">Country</label>
+            <input type="text" class="form-control" id="suCountry" name="country"
+              placeholder="Enter your country">
+          </div>
+          <div class="form-group">
             <label for="suGender" class="control-label">Gender</label>
-            <select class="form-control" id="suGender">
-              <option value="male">Male</option>
-              <option value="female">Female</option>
+            <select class="form-control" id="suGender" name="gender">
+              <option value="MALE">Male</option>
+              <option value="FEMALE">Female</option>
+              <option value="OTHER">Other</option>
             </select>
           </div>
+          <div class="form-group">
+            <label for="suRole" class="control-label">Role</label>
+            <select class="form-control" id="suRole" name="role">
+              <option value="ADMIN">Admin</option>
+              <option value="USER">User</option>
+            </select>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-pink btn-block">Confirm</button>
+            <button class="btn btn-default btn-block" data-dismiss="modal">Close</button>
+          </div>
         </form>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-pink btn-block" data-dismiss="modal">Confirm</button>
-        <button class="btn btn-default btn-block" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
