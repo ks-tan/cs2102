@@ -11,39 +11,59 @@
   	<div class="container">
 	  	<div class="row">
 	  		<div class="title col-md-9">Edit project</div>
-	  		<div class="col-md-3">
-		  		<button class="btn">Save as draft</button>
-					<button class="btn">Publish</button>
-				</div>
 	  	</div>
 	  	<div class = "row">
-		  	<form action="/projects" method="post">
+		  	<form action="/project" method="post">
 		  		<div class="form-group">
 					<label>Title</label>
 					<input class="form-control" placeholder="Enter title here" name="title"></input>
+				</div>
+				<div class="form-group">
+			    <label>Category</label>
+			    <select class="form-control" name="category">
+			      <option value="ART">Art</option>
+			      <option value="COMICS">Comics</option>
+			      <option value="CRAFTS">Crafts</option>				      
+			      <option value="DANCE">Dance</option>
+			      <option value="DESIGN">Design</option>
+			      <option value="FASHION">Fashion</option>
+			      <option value="FILM">Film And Video</option>
+			      <option value="FOOD">Food</option>
+			      <option value="GAMES">Games</option>
+			      <option value="JOURNALISM">Journalism</option>
+			      <option value="MUSIC">Music</option>
+			      <option value="PHOTOGRAPHY">Photography</option>
+			      <option value="PUBLISHING">Publishing</option>
+			      <option value="TECHNOLOGY">Technology</option>
+			      <option value="THEATER">Theater</option>
+			    </select>
+				</div>
+				<div class="form-group">
+					<label>Image URL</label>
+					<input class="form-control" placeholder="http://www..." name="image_url"></input>
 				</div>
 				<div class="form-group">
 					<label>Description</label>
 					<textarea class="form-control" type="text" name="description" placeholder="Start writing..."></textarea>
 				</div>
 				<div class="form-group">
-					<label>End Date</label>
-					<input class="form-control" placeholder="ddmmyyyy" name="date"></input>
+					<label>Start Date</label>
+					<input class="form-control" placeholder="ddmmyyyy" name="start_date"></input>
 				</div>
 				<div class="form-group">
-				    <label>Category</label>
-				    <select class="form-control" name="category">
-				      <option>Category 1</option>
-				      <option>Category 2</option>
-				      <option>Category 3</option>
-				      <option>Category 4</option>
-				      <option>Category 5</option>
-				    </select>
-				</div><br>
+					<label>End Date</label>
+					<input class="form-control" placeholder="ddmmyyyy" name="end_date"></input>
+				</div>
 				<div class="form-group">
 					<label>Amount seeking</label>
-					<input class="form-control" placeholder="USD 0.00" name="amount_sought"></input>
+					<input class="form-control" type="number" placeholder="USD 0.00" name="amount_sought"></input>
 				</div>
+				<div class="form-group">
+					<label>Owner Account ID` [Note: This is a placeholder]</label>
+					<input class="form-control" type="number" name="owner_account"></input>
+				</div>
+				<button class="btn">Save as draft</button>
+				<button type="submit" class="btn">Publish</button>
 			</form>
 		</div>
 	</div>
