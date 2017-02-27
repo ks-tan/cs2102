@@ -62,35 +62,22 @@
       </div>
     </div>
     <div class="row">
+      <% projects.forEach(function(project) { %>
       <div class="col-lg-3">
         <div class="projectcard">
           <div class="projectcard-thumbnail">
-            <img src="https://ksr-ugc.imgix.net/assets/015/162/643/7fd489074e7b5a4f0f0119d0eb01de25_original.jpg?w=338&h=190&fit=fill&bg=000000&v=1484358185&auto=format&q=92&s=c9ea094416b863bc98df7c5434942410" alt="" class="projectcard-thumbnail-img">
+            <img src="<%= project.image_url %>" alt="" class="projectcard-thumbnail-img">
           </div>
           <div class="projectcard-content">
-            <div class="project-title">Project 1</div>
-            <div class="project-owner">Andhieka, Singapore</div>
+            <div class="project-title"><%= project.title %></div>
+            <div class="project-owner"><%= project.owner %>, <%= project.owner_country %></div>
             <div class="project-description">
-              sjhdfjhsjkdhfjkhdsh kjfhjkshdjfhjsdhjfhjkshd kfhhsdhfkhksdkfjhskjdhjkf skjdhfjkshd ksjdhfjkshd jkshdfjkhds
+              <%= project.description %>
             </div>
           </div>
         </div>
       </div>
-
-      <div class="col-lg-3">
-        <div class="projectcard">
-          <div class="projectcard-thumbnail">
-            <img src="https://ksr-ugc.imgix.net/assets/015/162/643/7fd489074e7b5a4f0f0119d0eb01de25_original.jpg?w=338&h=190&fit=fill&bg=000000&v=1484358185&auto=format&q=92&s=c9ea094416b863bc98df7c5434942410" alt="" class="projectcard-thumbnail-img">
-          </div>
-          <div class="projectcard-content">
-            <div class="project-title">Project 1</div>
-            <div class="project-owner">Andhieka, Singapore</div>
-            <div class="project-description">
-              sjhdfjhsjkdhfjkhdsh kjfhjkshdjfhjsdhjfhjkshd kfhhsdhfkhksdkfjhskjdhjkf skjdhfjkshd ksjdhfjkshd jkshdfjkhds
-            </div>
-          </div>
-        </div>
-      </div>
+      <% }); %>
     </div>
   </div>
 

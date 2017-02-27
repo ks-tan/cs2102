@@ -81,3 +81,29 @@ exports.addFund = function (projectId, username, amount, date) {
         }
     );
 }
+
+exports.getCategories = function() {
+    console.log('attempting to get all available categories');
+    const results = [];
+    client.connect();
+    var query = client.query(QUERY_STATEMENTS.GET_CATEGORIES,
+        function(err) {
+            //if(err) throw err;
+            client.end();
+        });
+    return query;
+}
+
+exports.getProjects = function(title) {
+    title = '%' + title + '%';
+    console.log('attempting to get all projects', title);
+    client.connect();
+    var query = client.query(QUERY_STATEMENTS.GET_PROJECTS,
+        [title],
+        function(err, results) {
+            if(err) throw err;
+            console.log('result', results.rows[0]);
+            client.end();
+        });
+    return query;
+}

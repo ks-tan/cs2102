@@ -32,6 +32,7 @@ grey: #DCDEDD */
   color : #0C0F0D;
   border-radius: 6px;
   height: 440px;
+  margin-bottom: 20px;
 }
   .projectcard-thumbnail {
     border-radius: 6px 6px 0 0;
