@@ -19,7 +19,6 @@ router.get('/', function(req, res) {
 });
 
 router.get('/projects', function(req, res) {
-  var categories = [];
   var projects = [];
   console.log(req.query);
   var title = req.query.title?req.query.title:'';
@@ -27,30 +26,17 @@ router.get('/projects', function(req, res) {
     projects = results.rows;
     res.render('pages/search', {
       params: req.query,
-      categories: categories,
       projects : projects
     });
   });
-  // QUERY_EXECUTER.getCategories().then(results => {
-  //   categories = results.rows;
-
-  // }).then(a => {
-  //   return QUERY_EXECUTER.getProjects();
-  // }).then(results => {
-  //   projects = results.rows;
-  //   res.render('pages/search', {
-  //     categories: categories,
-  //     projects : projects
-  //   });
-  // });
-
-  // res.render('pages/search', {
-  //     categories: categories,
-  //     projects : projects
-  //   });
-
-
 });
+
+router.get('/categories', function(req, res) {
+  var promise = QUERY_EXECUTER.getCategories();
+  promise.then(results => {
+    return res.json(results.rows);
+  });
+})
 
 router.get('/projects/add', function(req, res) {
   res.render('pages/addEditProject');

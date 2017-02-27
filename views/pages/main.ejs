@@ -104,9 +104,12 @@
       <div class="section-header">
         <div class="section-title">Browse Projects</div>
       </div>
+      <form action="/projects" method="GET">
       <div class="browse-search-container">
         <div class="search-input">
-          <input type="text" class="browse-search-input form-control search-input-form"
+          <input type="text"
+            name="title"
+            class="browse-search-input form-control search-input-form"
             placeholder="Search project..">
           <span class="glyphicon glyphicon-search search-input-logo"></span>
         </div>
@@ -122,6 +125,7 @@
         </div>
         <% }); %>
       </div>
+      </form>
     </div>
   </div>
   <% include ../partials/footer %>

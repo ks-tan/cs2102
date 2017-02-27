@@ -66,6 +66,7 @@ grey: #DCDEDD */
   height: 140px;
   background: rgba(191,138,154,0.6);
   position: relative;
+  margin-bottom: 12px;
 }
   .categorycard-content {
     position: absolute;
