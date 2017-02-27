@@ -73,7 +73,7 @@ router.post('/account', function (req, res, next) {
     DATE              : start_date(use new Date())
     DATE              : end_date
     DECIMAL           : amount_sought
-    integer           : owner_account (must be valid account id)
+    string           : owner_account (must be valid username)
     ============================================================*/
 router.post('/project', function (req, res, next) {
   console.log(req.body);
