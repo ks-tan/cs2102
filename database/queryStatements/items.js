@@ -36,4 +36,5 @@ exports.GET_CATEGORIES =
 exports.GET_PROJECTS =
     'SELECT pr.id, pr.title, pr.image_url, pr.description, pr.owner_account, acc.full_name as owner, acc.country as owner_country FROM project pr '+
     'INNER JOIN account acc ON acc.id=pr.owner_account '+
-    'WHERE UPPER(pr.title) LIKE UPPER($1)';
+    'WHERE UPPER(pr.title) LIKE UPPER($1) '+
+    'ORDER BY pr.title';
