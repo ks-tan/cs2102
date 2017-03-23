@@ -104,39 +104,28 @@
       <div class="section-header">
         <div class="section-title">Browse Projects</div>
       </div>
+      <form action="/projects" method="GET">
       <div class="browse-search-container">
         <div class="search-input">
-          <input type="text" class="browse-search-input form-control search-input-form"
+          <input type="text"
+            name="title"
+            class="browse-search-input form-control search-input-form"
             placeholder="Search project..">
           <span class="glyphicon glyphicon-search search-input-logo"></span>
         </div>
-<!--         <div class="browse-advancesearch">
-          <span>Advance Search</span>
-        </div> -->
       </div>
       <div class="row">
+        <% categories.forEach(function(category) { %>
         <div class="col-lg-3">
           <div class="categorycard">
             <div class="categorycard-content">
-              Technology
+              <%= category.name %>
             </div>
           </div>
         </div>
-        <div class="col-lg-3">
-          <div class="categorycard">
-            <div class="categorycard-content">
-              Gardening
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="categorycard">
-            <div class="categorycard-content">
-              Food
-            </div>
-          </div>
-        </div>
+        <% }); %>
       </div>
+      </form>
     </div>
   </div>
   <% include ../partials/footer %>

@@ -32,6 +32,7 @@ grey: #DCDEDD */
   color : #0C0F0D;
   border-radius: 6px;
   height: 440px;
+  margin-bottom: 20px;
 }
   .projectcard-thumbnail {
     border-radius: 6px 6px 0 0;
@@ -65,6 +66,7 @@ grey: #DCDEDD */
   height: 140px;
   background: rgba(191,138,154,0.6);
   position: relative;
+  margin-bottom: 12px;
 }
   .categorycard-content {
     position: absolute;

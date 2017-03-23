@@ -9,12 +9,34 @@ const router = express.Router();
 const connectionString = constants.DB_CONNECTION;
 
 router.get('/', function(req, res) {
-  res.render('pages/main');
+  var categories = [];
+  QUERY_EXECUTER.getCategories().then(results => {
+    categories = results.rows;
+    res.render('pages/main', {
+      categories: categories
+    });
+  });
 });
 
 router.get('/projects', function(req, res) {
-  res.render('pages/search');
+  var projects = [];
+  console.log(req.query);
+  var title = req.query.title?req.query.title:'';
+  QUERY_EXECUTER.getProjects(title).then(results => {
+    projects = results.rows;
+    res.render('pages/search', {
+      params: req.query,
+      projects : projects
+    });
+  });
 });
+
+router.get('/categories', function(req, res) {
+  var promise = QUERY_EXECUTER.getCategories();
+  promise.then(results => {
+    return res.json(results.rows);
+  });
+})
 
 router.get('/projects/add', function(req, res) {
   res.render('pages/addEditProject');
@@ -40,7 +62,7 @@ router.get('/my-projects', function(req, res) {
     @Params
     string            : username
     string            : fullname
-    string            : description           
+    string            : description
     int               : age
     string            : gender (MALE, FEMALE, OTHER)
     string            : email
@@ -68,7 +90,7 @@ router.post('/account', function (req, res, next) {
     @Params
     string            : title
     string            : category
-    string            : image_url           
+    string            : image_url
     string            : description
     DATE              : start_date(use new Date())
     DATE              : end_date
@@ -96,7 +118,7 @@ router.post('/project', function (req, res, next) {
     @Params
     string            : title
     string            : category
-    string            : image_url           
+    string            : image_url
     string            : description
     DATE              : start_date(use new Date())
     DATE              : end_date
@@ -115,7 +137,7 @@ router.post('/project/update', function (req, res, next) {
   var amount_sought = req.body.amount_sought;
   var owner_account = req.body.owner_account.toLowerCase();
 
-  var promise = QUERY_EXECUTER.updateProject(projectId, title, category, 
+  var promise = QUERY_EXECUTER.updateProject(projectId, title, category,
     image_url, description, start_date, end_date, amount_sought);
   promise.then(function() {
     res.redirect('/');  //redirect back to home
