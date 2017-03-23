@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "repository": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "fixtures": "node database/fixtures/all.js",
+    "droptables": "node database/schemas/dropTables.js",
+    "maketables": "node database/schemas/createSchema.js"
   },
   "keywords": [],
   "author": "",

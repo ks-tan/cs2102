@@ -12,7 +12,12 @@ Create/start pgsl server at:
 
 #### Step 2. Create Schema with various tables
 Run this script and all tables should be created in the database
-> $ node database/schemas/createSchema.js
+
+```
+npm run droptables
+npm run maketables
+npm run fixtures
+```
 
 #### Step 3. Start server
 `app.js` is the entry point. To start server, run:

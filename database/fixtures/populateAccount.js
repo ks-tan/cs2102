@@ -2,9 +2,7 @@ const pg = require('pg');
 const constants = require('../../constants');
 
 const connectionString = constants.DB_CONNECTION;
-const client = new pg.Client(connectionString);
 
-client.connect();
 
 const queryStatement = 
         'INSERT INTO account VALUES(DEFAULT, \'dartteon\', \'BARON CHAN\', \'i am a nerd!\', 24, \'MALE\', \'dartteon@gmail.com\', \'Singapore\', \'ADMIN\');'
@@ -29,11 +27,13 @@ const queryStatement =
     +   'INSERT INTO account VALUES(DEFAULT, \'kuphal.burley\', \'Janet Klein\', \'Alias perspiciatis dolores repudiandae.\', 50, \'FEMALE\', \'leda20@example.org\', \'Kyrgyz Republic\', \'USER\');'
     ;
 
-const query1 = client.query(
-    queryStatement
-);
 
-query1.on('end', function() {
-    console.log('Success - Inserted all sample values into category table');
-    client.end(); 
-});
+ module.exports = function() {
+    const client = new pg.Client(connectionString);
+    client.connect();
+    return client.query(queryStatement)
+        .then( () => {
+            console.log('Success - Inserted all sample values into account table');
+            client.end(); 
+        });
+}

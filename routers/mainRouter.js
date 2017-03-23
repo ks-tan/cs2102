@@ -21,7 +21,7 @@ router.get('/', function(req, res) {
 router.get('/projects', function(req, res) {
   var projects = [];
   console.log(req.query);
-  var title = req.query.title?req.query.title:'';
+  var title = req.query.title || '';
   QUERY_EXECUTER.getProjects(title).then(results => {
     projects = results.rows;
     res.render('pages/search', {

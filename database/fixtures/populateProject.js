@@ -1,10 +1,9 @@
 const pg = require('pg');
 const constants = require('../../constants');
 
-const connectionString = constants.DB_CONNECTION;
-const client = new pg.Client(connectionString);
 
-client.connect();
+const connectionString = constants.DB_CONNECTION;
+
 
 const queryStatement = 
         'INSERT INTO project VALUES(DEFAULT, \'Journey to the Moon\', \'Art\', NULL, \'Remake of the first ever movie\', \'2017-02-20\', \'2018-02-20\', 1000.00, 1);'
@@ -21,11 +20,13 @@ const queryStatement =
     +   'INSERT INTO project VALUES(DEFAULT, \'Rising Star\', \'Music\', NULL, \'Money needed to purchase new equipment for my studio! You will not be disappointed!\', \'2016-12-14\', \'2017-09-19\', 387005, 14);'
     ;
 
-const query1 = client.query(
-    queryStatement
-);
 
-query1.on('end', function() {
-    console.log('Success - Inserted all sample values into category table');
-    client.end(); 
-});
+module.exports = function() {
+    const client = new pg.Client(connectionString);
+    client.connect();
+    return client.query(queryStatement)
+        .then(() => {
+            console.log('Success - Inserted all sample values into project table');
+            client.end(); 
+        });
+}
