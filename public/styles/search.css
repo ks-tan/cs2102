@@ -14,6 +14,7 @@
   color: #fff;
   border-radius: 6px;
   padding: 10px;
+  margin-bottom: 15px;
 }
   .search-category-item.active {
     background-color: #BF8A9A;
