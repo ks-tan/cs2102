@@ -25,22 +25,9 @@ router.get('/', function(req, res) {
       });
     },
     (error) => {
-
+      console.log(error);
     }
   );
-  // queryExecuter.getCategories().then(results => {
-  //   let categories = results.rows;
-  //   queryExecuter.getProjects().then(results => {
-  //     let featuredProjects = results.rows;
-
-  //     console.log(categories);
-  //     console.log(featuredProjects);
-  //     res.render('pages/main', {
-  //       categories: categories
-  //     });
-  //   })
-    
-  // });
 });
 
 router.get('/projects', function(req, res) {
