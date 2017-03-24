@@ -2,7 +2,6 @@
 const pg = require('pg');
 const express = require('express');
 const constants = require('../constants');
-const itemQuery = require('../database/queryStatements/items');
 const queryExecuter = require('../database/queryExecuter/execute.js');
 const Rx = require('rx');
 
@@ -54,7 +53,8 @@ router.get('/projects/add', function(req, res) {
   queryExecuter.getCategories().then( results => {
     res.render('pages/addEditProject', {
       title: 'Add project',
-      categories: results.rows
+      categories: results.rows,
+      project: {}
     });
   });
 });

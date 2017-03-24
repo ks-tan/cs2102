@@ -1,11 +1,4 @@
-const pg = require('pg');
-const constants = require('../../constants');
-
-
-const connectionString = constants.DB_CONNECTION;
-
-
-const queryStatement = 
+exports.query = 
         'INSERT INTO project VALUES(DEFAULT, \'Journey to the Moon\', \'Art\', NULL, \'Remake of the first ever movie\', \'2017-02-20\', \'2018-02-20\', 1000.00, 1);'
     +   'INSERT INTO project VALUES(DEFAULT, \'By Gamers, for Gamers\', \'Games\', NULL, \'OVERTHROW VALVE!!!\', \'2017-12-15\', \'2019-12-15\', 100000.00, 1);'
     +   'INSERT INTO project VALUES(DEFAULT, \'Overthrow3\', \'Games\', NULL, \'New ideas for a new Overthrow game!\', \'2016-12-16\', \'2018-02-08\', 816520, 4);'
@@ -19,14 +12,3 @@ const queryStatement =
     +   'INSERT INTO project VALUES(DEFAULT, \'Appreciating Latin\', \'Art\', NULL, \'I need funds to continue my studies in Latin and all of its culture!\', \'2016-10-15\', \'2017-12-12\', 701160, 9);'
     +   'INSERT INTO project VALUES(DEFAULT, \'Rising Star\', \'Music\', NULL, \'Money needed to purchase new equipment for my studio! You will not be disappointed!\', \'2016-12-14\', \'2017-09-19\', 387005, 14);'
     ;
-
-
-module.exports = function() {
-    const client = new pg.Client(connectionString);
-    client.connect();
-    return client.query(queryStatement)
-        .then(() => {
-            console.log('Success - Inserted all sample values into project table');
-            client.end(); 
-        });
-}

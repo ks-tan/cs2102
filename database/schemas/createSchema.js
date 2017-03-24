@@ -1,10 +1,9 @@
+require('dotenv').config();
+
 const pg = require('pg');
 const constants = require('../../constants');
+const dbutils = require('../dbutils');
 
-const connectionString = constants.DB_CONNECTION;
-const client = new pg.Client(connectionString);
-
-client.connect();
 
 const accountQuery = 
     'CREATE TABLE account (' +
@@ -27,40 +26,23 @@ const projectQuery =
     'CREATE TABLE project (' +
         'id SERIAL PRIMARY KEY,' +
         'title VARCHAR(256) NOT NULL,' +
-        'category VARCHAR(64) REFERENCES category(name),' +
+        'category VARCHAR(64) REFERENCES category(name) ON DELETE SET NULL,' +
         'image_url VARCHAR (2048),' +
         'description VARCHAR(1024),' +
         'start_date DATE NOT NULL,' +
         'end_date DATE NOT NULL,' +
         'amount_sought DECIMAL CHECK(amount_sought > 0),' +
-        'owner_account SERIAL REFERENCES account(id)' +
+        'owner_account INTEGER REFERENCES account(id) ON DELETE SET NULL' +
     ');';
 const fundsQuery = 
     'CREATE TABLE funds (' +
         'id SERIAL PRIMARY KEY,' +
-        'project SERIAL REFERENCES project(id),' +
-        'account SERIAL REFERENCES account(id),' +
+        'project SERIAL REFERENCES project(id) ON DELETE SET NULL,' +
+        'account SERIAL REFERENCES account(id) ON DELETE SET NULL,' +
         'amount DECIMAL CHECK(amount > 0),' +
         'time DATE NOT NULL' +
     ');';
 
-const query1 = client.query(
-    accountQuery
-);
 
-query1.on('end', function() {
-	console.log('Success - CREATE TABLE account');
-    var query2 = client.query(categoryQuery);
-    query2.on('end', function() {
-	    console.log('Success - CREATE TABLE category');
-        var query3 = client.query(projectQuery);
-        query3.on('end', function() {
-            console.log('Success - CREATE TABLE project');
-            var query4 = client.query(fundsQuery);
-            query4.on('end', function() {
-	            console.log('Success - CREATE TABLE fund');
-                client.end(); 
-            });
-        });
-    });
-});
+dbutils.executeQueriesInOrder(categoryQuery, accountQuery, projectQuery, fundsQuery)
+    .then( () => console.log("Make tables done!") );

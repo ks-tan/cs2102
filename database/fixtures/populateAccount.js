@@ -1,10 +1,4 @@
-const pg = require('pg');
-const constants = require('../../constants');
-
-const connectionString = constants.DB_CONNECTION;
-
-
-const queryStatement = 
+exports.query =  
         'INSERT INTO account VALUES(DEFAULT, \'dartteon\', \'BARON CHAN\', \'i am a nerd!\', 24, \'MALE\', \'dartteon@gmail.com\', \'Singapore\', \'ADMIN\');'
     +   'INSERT INTO account VALUES(DEFAULT, \'chl92\', \'POH HUI LING\', \'FUND ME PLZ\', 29, \'FEMALE\', \'\', \'Singapore\', \'USER\');'
     +   'INSERT INTO account VALUES(DEFAULT, \'xx00\', \'XIE XIN\', \'GAMES GAMES GAMES\', 17, \'FEMALE\', \'xiexin2011@gmail.com\', \'\', \'USER\');'
@@ -26,14 +20,4 @@ const queryStatement =
     +   'INSERT INTO account VALUES(DEFAULT, \'alfonzo.kutch\', \'Gracie Cole\', \'Ut non id laborum voluptatem officia commodi non.\', 59, \'FEMALE\', \'janick61@example.org\', \'Finland\', \'USER\');'
     +   'INSERT INTO account VALUES(DEFAULT, \'kuphal.burley\', \'Janet Klein\', \'Alias perspiciatis dolores repudiandae.\', 50, \'FEMALE\', \'leda20@example.org\', \'Kyrgyz Republic\', \'USER\');'
     ;
-
-
- module.exports = function() {
-    const client = new pg.Client(connectionString);
-    client.connect();
-    return client.query(queryStatement)
-        .then( () => {
-            console.log('Success - Inserted all sample values into account table');
-            client.end(); 
-        });
-}
+    
