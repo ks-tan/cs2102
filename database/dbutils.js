@@ -8,6 +8,16 @@ require('dotenv').config();
 const pg = require('pg');
 
 
+/**
+ * Executes the given query strings in order and returns a promise.
+ * Note that this function is only fit for use in utility scripts,
+ * such as to make tables, drop tables and install fixtures.
+ * 
+ * It is not fit for usage in application. See queryExecuter/execute.js
+ * instead for usage in application.
+ * 
+ * @param {*} queries : one or more queries to execute. 
+ */
 function executeQueriesInOrder(...queries) {
     const pool = new pg.Pool();
     if (queries.length < 1) return;
