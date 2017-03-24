@@ -38,3 +38,9 @@ exports.GET_PROJECTS =
     'INNER JOIN account acc ON acc.id=pr.owner_account '+
     'WHERE UPPER(pr.title) LIKE UPPER($1) '+
     'ORDER BY pr.title';
+
+exports.GET_PROJECT_BY_ID =
+    'SELECT pr.id, pr.title, pr.image_url, pr.description, pr.owner_account, pr.category, pr.start_date, pr.end_date, pr.amount_sought,' +
+    'acc.full_name as owner, acc.country as owner_country FROM project pr '+
+    'INNER JOIN account acc ON acc.id=pr.owner_account '+
+    'WHERE pr.id = $1';

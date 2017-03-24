@@ -84,3 +84,7 @@ exports.getProjects = function(title) {
     console.log('attempting to get all projects', title);
     return executeAndLog(queryStatements.GET_PROJECTS, [title]);
 }
+
+exports.getProjectById = function (id) {
+    return executeAndLog(queryStatements.GET_PROJECT_BY_ID, [id]);
+}

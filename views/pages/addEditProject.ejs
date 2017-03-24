@@ -13,42 +13,46 @@
 	  		<div class="title col-md-9"><%= title %></div>
 	  	</div>
 	  	<div class = "row">
-		  	<form action="/project" method="post">
+		  	<form action="<%= formAction %>" method="<%= formMethod %>">
 		  		<div class="form-group">
 					<label>Title</label>
-					<input class="form-control" placeholder="Enter title here" name="title"></input>
+					<input class="form-control" placeholder="Enter title here" name="title" value="<%= project.title %>"></input>
 				</div>
 				<div class="form-group">
 			    <label>Category</label>
 			    <select class="form-control" name="category">
 				<% categories.forEach( category => { %>
-					<option value="<%= category.name %>"><%=category.name%></option>
+					<% if (project.category == category.name) { %>
+						<option value="<%= category.name %>" selected><%=category.name%></option>
+					<% } else { %>
+						<option value="<%= category.name %>"><%=category.name%></option>
+					<% } %>
 				<% }); %>
 			    </select>
 				</div>
 				<div class="form-group">
 					<label>Image URL</label>
-					<input class="form-control" placeholder="http://www..." name="image_url"><%= project.image_url %></input>
+					<input class="form-control" placeholder="http://www..." name="image_url" value="<%= project.image_url %>"></input>
 				</div>
 				<div class="form-group">
 					<label>Description</label>
-					<textarea class="form-control" type="text" name="description" placeholder="Tell what the project is about and the motivations behind it in a short paragraph"></textarea>
+					<textarea class="form-control" type="text" name="description" placeholder="Tell what the project is about and the motivations behind it in a short paragraph"><%= project.description %></textarea>
 				</div>
 				<div class="form-group">
 					<label>Start Date</label>
-					<input class="form-control" type="date" placeholder="dd/mm/yyyy" name="start_date"></input>
+					<input class="form-control" type="date" placeholder="yyyy-mm-dd" name="start_date" value="<%= dateFormat(project.start_date) %>"></input>
 				</div>
 				<div class="form-group">
 					<label>End Date</label>
-					<input class="form-control" type="date" placeholder="dd/mm/yyyy" name="end_date"></input>
+					<input class="form-control" type="date" placeholder="yyyy-mm-dd" name="end_date" value="<%= dateFormat(project.end_date) %>"></input>
 				</div>
 				<div class="form-group">
 					<label>Amount seeking, in U.S. Dollars</label>
-					<input class="form-control" type="number" placeholder="0.00" name="amount_sought"></input>
+					<input class="form-control" type="number" placeholder="0" name="amount_sought" value=<%= project.amount_sought %>></input>
 				</div>
 				<div class="form-group">
 					<label>Owner Account ID` [Note: This is a placeholder]</label>
-					<input class="form-control" type="text" name="owner_account"></input>
+					<input class="form-control" type="text" name="owner_account" value="<%= project.owner_account%>"></input>
 				</div>
 				
 				<% if (project.id == null) { %>
