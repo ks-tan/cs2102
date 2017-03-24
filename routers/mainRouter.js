@@ -51,9 +51,6 @@ router.get('/categories', function(req, res) {
 })
 
 router.get('/projects/add', function(req, res) {
-  // a = A.objects.all()
-  // b = B.objects.all()
-  // res.render('templateName', { a: a, b: b})
   queryExecuter.getCategories().then( results => {
     res.render('pages/addEditProject', {
       title: 'Add project',
