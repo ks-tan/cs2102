@@ -3,26 +3,51 @@ const pg = require('pg');
 const express = require('express');
 const constants = require('../constants');
 const itemQuery = require('../database/queryStatements/items');
-const QUERY_EXECUTER = require('../database/queryExecuter/execute.js');
+const queryExecuter = require('../database/queryExecuter/execute.js');
+const Rx = require('rx');
+
 
 const router = express.Router();
 const connectionString = constants.DB_CONNECTION;
 
 router.get('/', function(req, res) {
-  var categories = [];
-  QUERY_EXECUTER.getCategories().then(results => {
-    categories = results.rows;
-    res.render('pages/main', {
-      categories: categories
-    });
-  });
+  let categoryObs = Rx.Observable.fromPromise(queryExecuter.getCategories());
+  let projectsObs = Rx.Observable.fromPromise(queryExecuter.getProjects());
+  Rx.Observable.zip(categoryObs, projectsObs).subscribe(
+    (results) => {
+      let categories = results[0].rows;
+      let projects = results[1].rows;
+      console.log(categories);
+      console.log(projects);
+      res.render('pages/main', {
+        categories: categories,
+        projects: projects
+      });
+    },
+    (error) => {
+
+    }
+  );
+  // queryExecuter.getCategories().then(results => {
+  //   let categories = results.rows;
+  //   queryExecuter.getProjects().then(results => {
+  //     let featuredProjects = results.rows;
+
+  //     console.log(categories);
+  //     console.log(featuredProjects);
+  //     res.render('pages/main', {
+  //       categories: categories
+  //     });
+  //   })
+    
+  // });
 });
 
 router.get('/projects', function(req, res) {
   var projects = [];
   console.log(req.query);
   var title = req.query.title || '';
-  QUERY_EXECUTER.getProjects(title).then(results => {
+  queryExecuter.getProjects(title).then(results => {
     projects = results.rows;
     res.render('pages/search', {
       params: req.query,
@@ -32,14 +57,22 @@ router.get('/projects', function(req, res) {
 });
 
 router.get('/categories', function(req, res) {
-  var promise = QUERY_EXECUTER.getCategories();
+  var promise = queryExecuter.getCategories();
   promise.then(results => {
     return res.json(results.rows);
   });
 })
 
 router.get('/projects/add', function(req, res) {
-  res.render('pages/addEditProject');
+  // a = A.objects.all()
+  // b = B.objects.all()
+  // res.render('templateName', { a: a, b: b})
+  queryExecuter.getCategories().then( results => {
+    res.render('pages/addEditProject', {
+      title: 'Add project',
+      categories: results.rows
+    });
+  });
 });
 
 router.get('/projects/:id', function(req, res) {
@@ -78,7 +111,7 @@ router.post('/account', function (req, res, next) {
   var email = req.body.email;
   var country = (req.body.country) ? req.body.country : '';
   var role = req.body.role;
-  var promise = QUERY_EXECUTER.addAccount(username, fullname, description, age, gender, email, country, role);
+  var promise = queryExecuter.addAccount(username, fullname, description, age, gender, email, country, role);
   promise.then(function() {
     res.redirect('/');  //redirect back to home
   });
@@ -107,7 +140,7 @@ router.post('/project', function (req, res, next) {
   var end_date = req.body.end_date;
   var amount_sought = req.body.amount_sought;
   var owner_account = req.body.owner_account;
-  var promise = QUERY_EXECUTER.addProject(title, category, image_url, description, start_date, end_date, amount_sought, owner_account);
+  var promise = queryExecuter.addProject(title, category, image_url, description, start_date, end_date, amount_sought, owner_account);
   promise.then(function() {
     res.redirect('/');  //redirect back to home
   });
@@ -137,7 +170,7 @@ router.post('/project/update', function (req, res, next) {
   var amount_sought = req.body.amount_sought;
   var owner_account = req.body.owner_account.toLowerCase();
 
-  var promise = QUERY_EXECUTER.updateProject(projectId, title, category,
+  var promise = queryExecuter.updateProject(projectId, title, category,
     image_url, description, start_date, end_date, amount_sought);
   promise.then(function() {
     res.redirect('/');  //redirect back to home
