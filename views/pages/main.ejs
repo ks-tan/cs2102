@@ -8,11 +8,13 @@
 </head>
 <body>
   <% include ../partials/navbar %>
-  <div class="main-banner">
-    <h2 class="main-banner-title">Start a new project!</h2>
-    <button class="btn btn-white btn-lg"
-      data-toggle="modal" data-target="#loginModal">Login</button>
-  </div>
+  <% if (username === "") { %>
+    <div class="main-banner">
+      <h2 class="main-banner-title">Start a new project!</h2>
+      <button class="btn btn-white btn-lg"
+        data-toggle="modal" data-target="#loginModal">Login</button>
+    </div>
+  <% } %>
   <div class="container-fluid featured">
     <div class="container">
       <div class="section-header">

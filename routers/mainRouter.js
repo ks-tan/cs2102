@@ -1,4 +1,3 @@
-
 const pg = require('pg');
 const express = require('express');
 const constants = require('../constants');
@@ -6,10 +5,10 @@ const queryExecuter = require('../database/queryExecuter/execute.js');
 const Rx = require('rx');
 const moment = require('moment');
 
-
 const router = express.Router();
 const connectionString = constants.DB_CONNECTION;
 
+var username = "";
 
 router.get('/', function(req, res) {
   let categoryObs = Rx.Observable.fromPromise(queryExecuter.getCategories());
@@ -20,6 +19,7 @@ router.get('/', function(req, res) {
       let categories = results[0].rows;
       let projects = results[1].rows;
       res.render('pages/main', {
+        username: username,
         categories: categories,
         projects: projects
       });
@@ -37,6 +37,7 @@ router.get('/projects', function(req, res) {
   queryExecuter.getProjects(title).then(results => {
     projects = results.rows;
     res.render('pages/search', {
+      username: username,
       params: req.query,
       projects : projects
     });
@@ -53,6 +54,7 @@ router.get('/categories', function(req, res) {
 router.get('/projects/add', function(req, res) {
   queryExecuter.getCategories().then( results => {
     res.render('pages/addEditProject', {
+      username: username,
       title: 'Add project',
       categories: results.rows,
       project: {},
@@ -63,7 +65,9 @@ router.get('/projects/add', function(req, res) {
 });
 
 router.get('/projects/:id', function(req, res) {
-  res.render('pages/viewProject');
+  res.render('pages/viewProject', {
+    username: username,
+  });
 });
 
 router.get('/projects/:id/edit', function(req, res) {
@@ -83,6 +87,7 @@ router.get('/projects/:id/edit', function(req, res) {
     let project = projects.rows[0];
     console.log(project);
     res.render('pages/addEditProject', {
+      username: username,
       title: 'Add project',
       categories: categories,
       project: project,
@@ -94,7 +99,9 @@ router.get('/projects/:id/edit', function(req, res) {
 });
 
 router.get('/my-projects', function(req, res) {
-  res.render('pages/myProjects');
+  res.render('pages/myProjects', {
+    username: username,
+  });
 });
 
 /*  ============================================================
@@ -182,6 +189,19 @@ router.post('/projects/:id/update', function (req, res, next) {
   promise.then(function() {
     res.redirect('/projects/' + projectId); // to project page
   });
+});
+
+router.post('/login', function(req, res, next) {
+  var promise = queryExecuter.getAccount(req.body.username);
+  promise.then(results => {
+    if (results.rows.length > 0) username = req.body.username;
+  });
+  res.redirect(req.get('referer'));
+});
+
+router.post('/logout', function(req, res, next) {
+  if (username !== "") username = "";
+  res.redirect(req.get('referer'));
 });
 
 module.exports = router;

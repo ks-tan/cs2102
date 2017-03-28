@@ -24,10 +24,14 @@
           <span class="glyphicon glyphicon-search search-input-logo"></span>
         </div>
       </form>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a type="button" data-toggle="modal" data-target="#loginModal">LOGIN</a></li>
-        <li><a type="button" data-toggle="modal" data-target="#signupModal">SIGN UP</a></li>
-      </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <% if (username === "") { %>
+            <li><a type="button" data-toggle="modal" data-target="#loginModal">LOGIN</a></li>
+            <li><a type="button" data-toggle="modal" data-target="#signupModal">SIGN UP</a></li>
+          <% } else { %>
+            <li><form action="/logout" method="POST"><button type="submit">LOGOUT</button></form></li>
+          <% } %>
+        </ul>
     </div>
   </div>
 </header>

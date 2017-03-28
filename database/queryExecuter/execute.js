@@ -77,6 +77,11 @@ exports.getCategories = function() {
     return executeAndLog(queryStatements.GET_CATEGORIES);
 }
 
+exports.getAccount = function(username) {
+    username = username || '';
+    console.log('attempting to get account based on username');
+    return executeAndLog(queryStatements.GET_ACCOUNT, [username]);
+}
 
 exports.getProjects = function(title) {
     title = title || '';

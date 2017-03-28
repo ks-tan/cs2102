@@ -8,17 +8,16 @@
         <h4 class="modal-title">Login</h4>
       </div>
       <div class="modal-body">
-        <form>
+        <form action="/login" method="post">
           <div class="form-group">
             <label for="username" class="control-label">Username</label>
-            <input type="text" class="form-control" id="username"
-              placeholder="Username">
+            <input type="text" class="form-control" id="username" placeholder="Username" name="username">
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-pink btn-block">Login</button>
+            <button class="btn btn-default btn-block" data-dismiss="modal">Close</button>
           </div>
         </form>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-pink btn-block" data-dismiss="modal">Login</button>
-        <button class="btn btn-default btn-block" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
