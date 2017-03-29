@@ -36,3 +36,8 @@ function selectCategory(category) {
   }
 
 }
+
+function openProject(id) {
+  var uri = URI('/projects/'+id);
+  window.location = uri;
+}

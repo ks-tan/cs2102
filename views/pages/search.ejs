@@ -60,7 +60,7 @@
     <div class="row">
       <% projects.forEach(function(project) { %>
       <div class="col-lg-3">
-        <div class="projectcard">
+        <div class="projectcard" onclick="openProject(<%= project.id %>)">
           <div class="projectcard-thumbnail">
             <img src="<%= project.image_url %>" alt="" class="projectcard-thumbnail-img">
           </div>
