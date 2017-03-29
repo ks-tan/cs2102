@@ -13,29 +13,37 @@
 
   <div class="search-banner">
     <div class="container">
-      <form action="/projects" method="GET">
       <div class="search-banner-title">Browse Projects</div>
       <div class="search-banner-input-container">
         <div class="search-input">
           <input type="text" class="form-control search-input-form"
             name="title"
-            placeholder="Search project..">
+            placeholder="Search project.."
+            id="titleInput">
           <span class="glyphicon glyphicon-search search-input-logo"></span>
         </div>
       </div>
       <h4>Search in</h4>
       <div class="row" id="searchCategories">
-
       </div>
-      </form>
+      <button action="submit" class="btn btn-primary" onclick="searchProject()">
+        <span class="glyphicon glyphicon-search"></span>
+        Search
+      </button>
     </div>
   </div>
 
   <div class="container search-result">
     <div class="section-header">
-      <div class="section-title">Search Results : <%= params.title %></div>
+      <div class="section-title">
+        Search Results : &nbsp;<%= params.title %><br>
+        Category:&nbsp;&nbsp;
+        <% params.categories.forEach(function(category) { %>
+          <%= category %> &nbsp;
+        <% }); %>
+      </div>
       <div class="section-nav">
-        <span>Sort by</span>
+        <!-- <span>Sort by</span>
         <div class="dropdown" style="display: inline-block;">
           <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             Name
@@ -46,7 +54,7 @@
             <li><a value="start_date">Start date</a></li>
             <li><a value="end_date">End date</a></li>
           </ul>
-        </div>
+        </div> -->
       </div>
     </div>
     <div class="row">

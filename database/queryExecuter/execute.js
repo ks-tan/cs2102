@@ -96,13 +96,25 @@ exports.getCategories = function() {
     return query;
 }
 
-exports.getProjects = function(title) {
+exports.getProjects = function(title, categories) {
+    title = title || '';
     title = '%' + title + '%';
-    console.log('attempting to get all projects', title);
+    var temp = [];
+    var params = [title];
+    var stmt = QUERY_STATEMENTS.GET_PROJECTS;
+    if(categories.length>0) {
+        for(var i=2; i<=categories.length+1;i++) {
+            temp.push('$'+i);
+        }
+        params = params.concat(categories);
+        var insertIdx = stmt.indexOf('ORDER BY');
+        stmt = stmt.slice(0,insertIdx) + 'AND pr.category IN ('+temp.join(',')+') ' + stmt.slice(insertIdx);
+    }
     const client = new pg.Client(connectionString);
     client.connect();
-    var query = client.query(QUERY_STATEMENTS.GET_PROJECTS,
-        [title],
+    console.log(stmt, params);
+    var query = client.query(stmt,
+        params,
         function(err, results) {
             if(err) throw err;
             client.end();
