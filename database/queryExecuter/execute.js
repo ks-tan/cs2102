@@ -12,9 +12,9 @@ const pool = new pg.Pool();
 /**
  * Execute a query with the given arguments, and returns a promise.
  * The promise will contain the results. Use it like this:
- * 
+ *
  *    executeAndLog(query, args).then( (results) => doSomething(results) );
- * 
+ *
  * @param {*} query : The query string to execute.
  * @param {*} args : Optional. Arguments for the query.
  */
@@ -46,7 +46,7 @@ exports.addAccount = function addAccount(username, full_name, description, age,
 
 exports.addProject = function (title, category, image_url, description,
     start_date, end_date, amount_sought, owner_account) {
-    
+
     console.log('attemping to add project ' + title + " owner " + owner_account);
     return executeAndLog(queryStatements.ADD_PROJECT, [
         title, category, image_url, description, start_date, end_date, amount_sought, owner_account
@@ -56,7 +56,7 @@ exports.addProject = function (title, category, image_url, description,
 
 exports.updateProject = function (id, title, category, image_url, description,
     start_date, end_date, amount_sought) {
-    
+
     console.log('attemping to edit project ' + title);
     return executeAndLog(queryStatements.UPDATE_PROJECT, [
         title, category, image_url, description, start_date, end_date, amount_sought, id
@@ -83,11 +83,22 @@ exports.getAccount = function(username) {
     return executeAndLog(queryStatements.GET_ACCOUNT, [username]);
 }
 
-exports.getProjects = function(title) {
+exports.getProjects = function(title, categories) {
     title = title || '';
     title = '%' + title + '%';
-    console.log('attempting to get all projects', title);
-    return executeAndLog(queryStatements.GET_PROJECTS, [title]);
+    var temp = [];
+    var params = [title];
+    var stmt = queryStatements.GET_PROJECTS;
+    if(categories!==undefined && categories.length>0) {
+        for(var i=2; i<=categories.length+1;i++) {
+            temp.push('$'+i);
+        }
+        params = params.concat(categories);
+        var insertIdx = stmt.indexOf('ORDER BY');
+        stmt = stmt.slice(0,insertIdx) + 'AND pr.category IN ('+temp.join(',')+') ' + stmt.slice(insertIdx);
+    }
+    console.log('attempting to get all projects', params);
+    return executeAndLog(stmt, params);
 }
 
 exports.getProjectById = function (id) {

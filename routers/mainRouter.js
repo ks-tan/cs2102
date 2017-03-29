@@ -8,7 +8,7 @@ const moment = require('moment');
 const router = express.Router();
 const connectionString = constants.DB_CONNECTION;
 
-var username = "";
+var username = '';
 
 router.get('/', function(req, res) {
   let categoryObs = Rx.Observable.fromPromise(queryExecuter.getCategories());
@@ -33,12 +33,17 @@ router.get('/', function(req, res) {
 router.get('/projects', function(req, res) {
   var projects = [];
   console.log(req.query);
-  var title = req.query.title || '';
-  queryExecuter.getProjects(title).then(results => {
+  var title = req.query.title?req.query.title:'';
+  var categories = req.query.categories?req.query.categories:[];
+  var params = {
+    title: title,
+    categories: categories
+  };
+  queryExecuter.getProjects(title, categories).then(results => {
     projects = results.rows;
     res.render('pages/search', {
       username: username,
-      params: req.query,
+      params: params,
       projects : projects
     });
   });
