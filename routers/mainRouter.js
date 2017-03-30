@@ -70,8 +70,24 @@ router.get('/projects/add', function(req, res) {
 });
 
 router.get('/projects/:id', function(req, res) {
-  res.render('pages/viewProject', {
-    username: username,
+  var projectId = req.params.id;
+  var promiseGetProject = queryExecuter.getProjectById(projectId);
+  promiseGetProject.then(results => {
+    var result = results.rows[0];
+    res.render('pages/viewProject', {
+      username: username,
+      title: result.title,
+      description: result.description,
+      owner_account: result.owner_account,
+      category: result.category,
+      start_date: result.start_date,
+      end_date: result.end_date,
+      days_left: result.days_left,
+      amount_sought: result.amount_sought,
+      owner: result.owner,
+      owner_country: result.owner_country,
+      owner_description: result.owner_description
+    });
   });
 });
 
