@@ -31,8 +31,8 @@
 						</div>
 						<div class="col-md-3 latest-pledge">
 							<h4>Latest Pledge:</h4>
-							<h3>$300</h3>
-							<h4>From Johnny</h4>
+							<h3>$<%= backers[backers.length - 1].amount %></h3>
+							<h4>From <%= backers[backers.length - 1].account %></h4>
 							<button type="button" class="btn" data-toggle="modal" data-target=".backers-modal">See all backers</button><br><br>
 							<% if (username !== "") { %>
 								<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".pledge-modal">Pledge Now</button>
