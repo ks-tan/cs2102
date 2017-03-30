@@ -75,6 +75,7 @@ router.get('/projects/:id', function(req, res) {
   promiseGetProject.then(results => {
     var result = results.rows[0];
     res.render('pages/viewProject', {
+      projectId: projectId,
       username: username,
       title: result.title,
       description: result.description,
@@ -223,6 +224,16 @@ router.post('/login', function(req, res, next) {
 router.post('/logout', function(req, res, next) {
   if (username !== "") username = "";
   res.redirect(req.get('referer'));
+});
+
+router.post('/pledge', function(req, res, next) {
+  var projectId = req.body.projectId;
+  var amount = req.body.amount;
+  var date = new Date();
+  var promise = queryExecuter.addFund(projectId, username, amount, date);
+  promise.then(results => {
+    res.redirect(req.get('referer'));
+  });
 });
 
 module.exports = router;

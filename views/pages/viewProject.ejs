@@ -30,7 +30,9 @@
 							<h3>$300</h3>
 							<h4>From Johnny</h4>
 							<button class="btn">See all backers</button><br><br>
-							<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".pledge-modal">Pledge Now</button>
+							<% if (username !== "") { %>
+								<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".pledge-modal">Pledge Now</button>
+							<% } %>
 						</div>
 					</div>
 				</div>
@@ -40,12 +42,13 @@
 		<div class="modal fade pledge-modal" tabindex="-1" role="dialog" aria-labelledby="pledge-modal" aria-hidden="true">
 		  <div class="modal-dialog modal-md">
 		    <div class="modal-content">
-		      <h2>You (@your_username)</h2>
+		      <h2>You (@<%= username %>)</h2>
 		      <h3>are pledging</h3>
 		      <form action="/pledge" method="post">
 		      	<input class="form-control pledge-amount" placeholder="USD 0.00" name="amount"></input><br>
-		     		<button type="submit" class="btn"><h3>Pledge Now</h3></button><br><br>
-		     	</form>
+		      	<input style="display: none;" value=<%= projectId%> name="projectId" ></input>
+		     	<button type="submit" class="btn"><h3>Pledge Now</h3></button><br><br>
+		      </form>
 		    </div>
 		  </div>
 		</div>

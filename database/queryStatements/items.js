@@ -34,7 +34,7 @@ exports.GET_CATEGORIES =
     'SELECT * FROM category ORDER BY name';
 
 exports.GET_ACCOUNT = 
-    'SELECT username FROM account WHERE username = $1';
+    'SELECT * FROM account WHERE username = $1';
 
 exports.GET_PROJECTS =
     'SELECT pr.id, pr.title, pr.image_url, pr.description, pr.owner_account, acc.full_name as owner, acc.country as owner_country FROM project pr '+

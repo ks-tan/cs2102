@@ -63,14 +63,12 @@ exports.updateProject = function (id, title, category, image_url, description,
     ]);
 }
 
-
 exports.addFund = function (projectId, username, amount, date) {
     console.log('attemping to fund to projectId ' + projectId + ' from user ' + username);
     return executeAndLog(queryStatements.ADD_FUND, [
         projectId, username, amount, date
     ]);
 }
-
 
 exports.getCategories = function() {
     console.log('attempting to get all available categories');
