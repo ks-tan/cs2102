@@ -21,15 +21,19 @@
 					<div class="row">
 						<div class="col-md-3 funding-status">
 							<h2>Funding Status:</h2>
-							<h1 style="color: #BF8A9A">Success</h1>
-							<h3>1024% funded</h3>
-							<h4>$20,000 / $10,000 goal</h4>
+							<% if (is_funded) { %>
+								<h1 style="color: #BF8A9A">Success</h1>
+							<% } else { %>
+								<h1 style="color: #BF8A9A">Not Funded</h1>
+							<% } %>
+							<h3><%= percent_funded %>% funded</h3>
+							<h4>$<%= amount_funded %> / $<%= amount_sought %> goal</h4>
 						</div>
 						<div class="col-md-3 latest-pledge">
 							<h4>Latest Pledge:</h4>
 							<h3>$300</h3>
 							<h4>From Johnny</h4>
-							<button class="btn">See all backers</button><br><br>
+							<button type="button" class="btn" data-toggle="modal" data-target=".backers-modal">See all backers</button><br><br>
 							<% if (username !== "") { %>
 								<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".pledge-modal">Pledge Now</button>
 							<% } %>
@@ -49,6 +53,16 @@
 		      	<input style="display: none;" value=<%= projectId%> name="projectId" ></input>
 		     	<button type="submit" class="btn"><h3>Pledge Now</h3></button><br><br>
 		      </form>
+		    </div>
+		  </div>
+		</div>
+		<div class="modal fade backers-modal" tabindex="-1" role="dialog" aria-labelledby="backers-modal" aria-hidden="true">
+		  <div class="modal-dialog modal-md">
+		    <div class="modal-content">
+		      <h2>Backers</h2>
+			  <% for(var i=0; i < backers.length; i++) { %>
+			   <div><%= backers[i].account %> backed <%= backers[i].project %> for <%= backers[i].amount %> on <%= backers[i].time %></td></div>
+			  <% } %>
 		    </div>
 		  </div>
 		</div>

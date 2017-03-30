@@ -84,7 +84,13 @@ router.get('/projects/:id', function(req, res) {
       start_date: result.start_date,
       end_date: result.end_date,
       days_left: result.days_left,
+      backers: result.backers,
       amount_sought: result.amount_sought,
+      amount_funded: result.amount_funded,
+      //TODO: do this in sql query instead?
+      is_funded: parseInt(result.amount_sought) < parseInt(result.amount_funded),
+      //TODO: do this in sql query instead?
+      percent_funded: parseFloat(parseFloat(result.amount_funded) / parseFloat(result.amount_sought) * 100).toFixed(2),
       owner: result.owner,
       owner_country: result.owner_country,
       owner_description: result.owner_description
