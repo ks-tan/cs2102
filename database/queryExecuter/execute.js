@@ -102,3 +102,7 @@ exports.getProjects = function(title, categories) {
 exports.getProjectById = function (id) {
     return executeAndLog(queryStatements.GET_PROJECT_BY_ID, [id]);
 }
+
+exports.getFeaturedProjects = function (numProjects) {
+    return executeAndLog(queryStatements.GET_FEATURED_PROJECTS, numProjects);
+}
