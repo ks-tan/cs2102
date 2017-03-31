@@ -52,15 +52,9 @@ exports.GET_PROJECT_BY_ID =
     "WHERE pr.id = $1";
 
 exports.GET_FEATURED_PROJECTS =
-    "SELECT pr.id, pr.title, pr.image_url, pr.description, pr.owner_account, pr.category, pr.start_date, pr.end_date, pr.amount_sought," +
-    "DATE_PART('day', pr.end_date::timestamp - pr.start_date::timestamp) as days_left, " + 
-    "(SELECT array_to_json(array_agg(funds.*)) FROM funds WHERE funds.project=pr.id) as backers, " +
-    "(SELECT SUM(funds.amount) FROM funds WHERE funds.project=pr.id) as amount_funded, "+
-    "acc.full_name as owner, acc.country as owner_country, acc.description as owner_description FROM project pr "+
-    "INNER JOIN account acc ON acc.id=pr.owner_account "+
+    "SELECT pr.id, pr.title, pr.image_url, pr.description, " +
+    "((SELECT SUM(funds.amount) FROM funds WHERE funds.project=pr.id) / pr.amount_sought) as percent " +
+    "FROM project pr " +
     "WHERE pr.end_date > now()::date " +
-    "ORDER BY amount_funded/pr.amount_sought"
-    "LIMIT $1";
-
-
-
+    "ORDER BY -((SELECT SUM(funds.amount) FROM funds WHERE funds.project=pr.id) / pr.amount_sought) ASC " +    //Doing negation and ASC because SQL treats null values (0 funds) as higher
+    "LIMIT 12";

@@ -243,8 +243,7 @@ router.post('/pledge', function(req, res, next) {
 });
 
 router.get('/featured', function(req, res, next) {
-  var numProjects = req.body.numProjects;
-  var promise = queryExecuter.getFeaturedProjects(numProjects);
+  var promise = queryExecuter.getFeaturedProjects();
   promise.then(results => {
     //res.redirect(req.get('referer'));
     //Return the array of results here
