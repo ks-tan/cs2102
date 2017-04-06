@@ -257,7 +257,7 @@ router.get('/featured', function(req, res, next) {
 
 /* Statistics Module */
 
-router.get('/stats', (req, res) => {
+router.get('/reports/funds', (req, res) => {
   let summaryObs = Rx.Observable.fromPromise(queryExecuter.getOverallStatsSummary());
   let contentObs = Rx.Observable.fromPromise(queryExecuter.getOverallStatsContent());
   Rx.Observable.zip(summaryObs, contentObs).subscribe(results => {
