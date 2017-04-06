@@ -84,18 +84,25 @@ exports.getAccount = function(username) {
 exports.getProjects = function(title, categories) {
     title = title || '';
     title = '%' + title + '%';
-    var temp = [];
+    let temp = [];
     var params = [title];
     var stmt = queryStatements.GET_PROJECTS;
     if(categories!==undefined && categories.length>0) {
-        for(var i=2; i<=categories.length+1;i++) {
-            temp.push('$'+i);
+        let categoryArr = [];
+        if (typeof(categories)=='string') {
+            params.push(categories);
+            var insertIdx = stmt.indexOf('ORDER BY');
+            stmt = stmt.slice(0,insertIdx) + 'AND pr.category=$2 ' + stmt.slice(insertIdx);
+        } else {
+            for(var i=2; i<=categories.length+1;i++) {
+                temp.push('$'+i);
+            }
+            params = params.concat(categories);
+            var insertIdx = stmt.indexOf('ORDER BY');
+            stmt = stmt.slice(0,insertIdx) + 'AND pr.category IN ('+temp.join(',')+') ' + stmt.slice(insertIdx);
         }
-        params = params.concat(categories);
-        var insertIdx = stmt.indexOf('ORDER BY');
-        stmt = stmt.slice(0,insertIdx) + 'AND pr.category IN ('+temp.join(',')+') ' + stmt.slice(insertIdx);
     }
-    console.log('attempting to get all projects', params);
+    console.log('attempting to get all projects', params, stmt, categories);
     return executeAndLog(stmt, params);
 }
 

@@ -52,9 +52,10 @@ exports.GET_PROJECT_BY_ID =
     "WHERE pr.id = $1";
 
 exports.GET_FEATURED_PROJECTS =
-    "SELECT pr.id, pr.title, pr.image_url, pr.description, " +
+    "SELECT pr.id, pr.title, pr.image_url, pr.description, acc.full_name as owner, acc.country as owner_country, " +
     "((SELECT SUM(funds.amount) FROM funds WHERE funds.project=pr.id) / pr.amount_sought) as percent " +
     "FROM project pr " +
+    "INNER JOIN account acc ON acc.id=pr.owner_account " +
     "WHERE pr.end_date > now()::date " +
     "ORDER BY -((SELECT SUM(funds.amount) FROM funds WHERE funds.project=pr.id) / pr.amount_sought) ASC " +    //Doing negation and ASC because SQL treats null values (0 funds) as higher
     "LIMIT 12";

@@ -12,7 +12,7 @@ var username = '';
 
 router.get('/', function(req, res) {
   let categoryObs = Rx.Observable.fromPromise(queryExecuter.getCategories());
-  let projectsObs = Rx.Observable.fromPromise(queryExecuter.getProjects());
+  let projectsObs = Rx.Observable.fromPromise(queryExecuter.getFeaturedProjects());
   Rx.Observable.zip(categoryObs, projectsObs).subscribe(
     (results) => {
       // this will only be executed once all the queries are done
@@ -35,6 +35,9 @@ router.get('/projects', function(req, res) {
   console.log(req.query);
   var title = req.query.title?req.query.title:'';
   var categories = req.query.categories?req.query.categories:[];
+  if(typeof(categories)=='string') {
+    categories = [categories];
+  }
   var params = {
     title: title,
     categories: categories
