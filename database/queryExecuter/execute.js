@@ -126,3 +126,11 @@ exports.getOverallStatsSummary = function () {
 exports.getOverallStatsContent = function () {
     return executeAndLog(statsQueryStatements.OVERALL_STATS_CONTENT);
 }
+
+exports.getProjectStatsSummary = function () {
+    return executeAndLog(statsQueryStatements.PROJECT_STATS_SUMMARY);
+}
+
+exports.getProjectStatsContent = function () {
+    return executeAndLog(statsQueryStatements.PROJECT_STATS_CONTENT);
+}

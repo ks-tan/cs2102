@@ -12,7 +12,7 @@
   <!-- CONTENT -->
   <% if (content) { %>
 
-    <table class="table" summary="<%= report_description %>">
+    <table class="table" summary="<%= reportDescription %>">
       <tr>
         <% for (let field of content.fields) { %>
         <th><%= capitalize.words(field.name) %></th>

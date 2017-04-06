@@ -265,8 +265,25 @@ router.get('/reports/funds', (req, res) => {
     let content = results[1];
     res.render('stats/index.ejs', {
       username: username,
-      report_description: 'Overall statistics of IndieStarter funding.',
-      report_title: 'Funds Report',
+      reportDescription: 'Overall statistics of IndieStarter funding.',
+      reportTitle: 'Funds Report',
+      summary: summary,
+      content: content,
+      capitalize: capitalize
+    });
+  });
+});
+
+router.get('/reports/projects', (req, res) => {
+  let summaryObs = Rx.Observable.fromPromise(queryExecuter.getProjectStatsSummary());
+  let contentObs = Rx.Observable.fromPromise(queryExecuter.getProjectStatsContent());
+  Rx.Observable.zip(summaryObs, contentObs).subscribe(results => {
+    let summary = results[0];
+    let content = results[1];
+    res.render('stats/index.ejs', {
+      username: username,
+      reportDescription: 'Status of all projects in IndieStarter.',
+      reportTitle: 'Projects Report',
       summary: summary,
       content: content,
       capitalize: capitalize
