@@ -1,0 +1,32 @@
+<div class="resultscontainer">
+  <!-- SUMMARY -->
+  <% if (summary) { %>
+    <% for (let field of summary.fields) { %>
+    <p>
+      <strong><%= capitalize.words(field.name) %>:</strong>
+      <%= summary.rows[0][field.name] %>
+    </p>
+    <% } %>
+  <% } %>
+
+  <!-- CONTENT -->
+  <% if (content) { %>
+
+    <table class="table" border="1" summary="<%= report_description %>">
+      <tr>
+        <% for (let field of content.fields) { %>
+        <th><%= capitalize.words(field.name) %></th>
+        <% } %>
+      </tr>
+      
+      <% for (let row of content.rows) { %>
+      <tr>
+        <% for (let field of content.fields) { %>
+        <td><%= row[field.name] %>
+        <% } %>
+      </tr>    
+      <% } %>
+    </table>
+
+  <% } %>
+</div>

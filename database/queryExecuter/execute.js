@@ -2,7 +2,8 @@ require('dotenv').config();
 
 const pg = require('pg');
 const constants = require('../../constants');
-const queryStatements = require('../queryStatements/items.js');
+const queryStatements = require('../queryStatements/items');
+const statsQueryStatements = require('../queryStatements/stats');
 const pool = new pg.Pool();
 
 
@@ -19,7 +20,7 @@ const pool = new pg.Pool();
  * @param {*} args : Optional. Arguments for the query.
  */
 function executeAndLog(query, args) {
-    let summary = query.substring(0, 20);
+    let summary = query.substring(0, 50);
     console.log("%s...: EXECUTING", summary);
     let promise = pool.query(query, args).then( result => {
         console.log("%s...: SUCCESS. Returned %d rows.", summary, result.rowCount);
@@ -112,4 +113,15 @@ exports.getProjectById = function (id) {
 
 exports.getFeaturedProjects = function (numProjects) {
     return executeAndLog(queryStatements.GET_FEATURED_PROJECTS, numProjects);
+}
+
+
+/* Statistics Module */
+
+exports.getOverallStatsSummary = function () {
+    return executeAndLog(statsQueryStatements.OVERALL_STATS_SUMMARY);
+}
+
+exports.getOverallStatsContent = function () {
+    return executeAndLog(statsQueryStatements.OVERALL_STATS_CONTENT);
 }

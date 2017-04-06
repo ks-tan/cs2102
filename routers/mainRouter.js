@@ -4,9 +4,10 @@ const constants = require('../constants');
 const queryExecuter = require('../database/queryExecuter/execute.js');
 const Rx = require('rx');
 const moment = require('moment');
+const capitalize = require('capitalize');
+
 
 const router = express.Router();
-const connectionString = constants.DB_CONNECTION;
 
 var username = '';
 
@@ -250,6 +251,26 @@ router.get('/featured', function(req, res, next) {
   promise.then(results => {
     //res.redirect(req.get('referer'));
     //Return the array of results here
+  });
+});
+
+
+/* Statistics Module */
+
+router.get('/stats', (req, res) => {
+  let summaryObs = Rx.Observable.fromPromise(queryExecuter.getOverallStatsSummary());
+  let contentObs = Rx.Observable.fromPromise(queryExecuter.getOverallStatsContent());
+  Rx.Observable.zip(summaryObs, contentObs).subscribe(results => {
+    let summary = results[0];
+    let content = results[1];
+    res.render('stats/index.ejs', {
+      username: username,
+      report_description: 'Overall statistics of IndieStarter funding.',
+      report_title: 'Monthly statistics',
+      summary: summary,
+      content: content,
+      capitalize: capitalize
+    });
   });
 });
 
