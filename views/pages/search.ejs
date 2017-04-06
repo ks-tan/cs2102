@@ -61,9 +61,6 @@
       <% projects.forEach(function(project) { %>
       <div class="col-lg-3">
         <div class="projectcard" onclick="openProject(<%= project.id %>)">
-          <div class="projectcard-thumbnail">
-            <img src="<%= project.image_url %>" alt="" class="projectcard-thumbnail-img">
-          </div>
           <div class="projectcard-content">
             <div class="project-title"><%= project.title %></div>
             <div class="project-owner"><%= project.owner %>, <%= project.owner_country %></div>

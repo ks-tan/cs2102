@@ -31,8 +31,14 @@ grey: #DCDEDD */
   border: 1px solid #F2EFED;
   color : #0C0F0D;
   border-radius: 6px;
-  height: 440px;
+  height: 200px;
   margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  cursor: pointer;
+}
+.projectcard:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
   .projectcard-thumbnail {
     border-radius: 6px 6px 0 0;
@@ -45,28 +51,33 @@ grey: #DCDEDD */
     }
 
   .projectcard-content {
-    padding: 10px;
+    padding: 20px;
   }
   .project-title {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
     margin-bottom: 2px;
   }
   .project-owner {
     margin-bottom: 10px;
-    font-size: 12px;
+    font-size: 13px;
   }
   .project-description {
-    font-size: 12px;
+    font-size: 13px;
 
   }
 
 .categorycard {
   border-radius: 6px;
-  height: 140px;
+  height: 100px;
   background: rgba(191,138,154,0.6);
   position: relative;
   margin-bottom: 12px;
+  cursor: pointer;
+}
+.categorycard.mod-inline {
+  display: inline-block;
+  width: 200px;
 }
   .categorycard-content {
     position: absolute;
@@ -136,4 +147,9 @@ button.btn.btn-lg {
   .carousel-indicators .active {
     background-color: #BF8A9A;
   }
+
+
+.u-inline {
+  display: inline-block;
+}
 

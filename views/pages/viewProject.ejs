@@ -3,7 +3,7 @@
 <head>
 	<title>IndieStarter</title>
 	<% include ../partials/header %>
-	<link rel="stylesheet" href="styles/viewProject.css">
+	<link rel="stylesheet" href="/styles/viewProject.css">
 </head>
 <body>
 	<% include ../partials/navbar %>
@@ -12,14 +12,11 @@
 		<div class="row">
 			<img class="image col-md-6" src="https://ksr-ugc.imgix.net/assets/015/261/638/11e65a8474a654871663fb3c582e06fd_original.tif?w=680&fit=max&v=1485200241&auto=format&q=92&s=2a9de9204152842744d993a20756bf5c">
 			<div class="col-md-6">
-				<div class="container">
-					<div class="row">
-						<div class="title"><h1><%= title %><h1></div>
-						<div class="category"><h2><%= category %><h2></div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-md-3 funding-status">
+				<div class="title"><h1><%= title %><h1></div>
+				<div class="categorycard mod-inline"><div class="categorycard-content"><%= category %></div></div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="funding-status">
 							<h2>Funding Status:</h2>
 							<% if (is_funded) { %>
 								<h1 style="color: #BF8A9A">Success</h1>
@@ -29,7 +26,10 @@
 							<h3><%= percent_funded %>% funded</h3>
 							<h4>$<%= amount_funded %> / $<%= amount_sought %> goal</h4>
 						</div>
-						<div class="col-md-3 latest-pledge">
+						
+					</div>
+					<div class="col-md-6">
+						<div class="latest-pledge">
 							<h4>Latest Pledge:</h4>
 							<h3>$<%= backers[backers.length - 1].amount %></h3>
 							<h4>From <%= backers[backers.length - 1].username %></h4>
