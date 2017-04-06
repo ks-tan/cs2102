@@ -1,3 +1,12 @@
 .resultscontainer {
     padding: 5%;
 }
+
+table {
+    text-align: right;
+}
+
+th {
+    text-align: center;
+    background: rgba(191, 138, 154, 0.5);
+}

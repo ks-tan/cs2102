@@ -22,6 +22,7 @@ const pool = new pg.Pool();
 function executeAndLog(query, args) {
     let summary = query.substring(0, 50);
     console.log("%s...: EXECUTING", summary);
+    console.log(query);
     let promise = pool.query(query, args).then( result => {
         console.log("%s...: SUCCESS. Returned %d rows.", summary, result.rowCount);
         return result;

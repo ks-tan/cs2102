@@ -266,7 +266,7 @@ router.get('/stats', (req, res) => {
     res.render('stats/index.ejs', {
       username: username,
       report_description: 'Overall statistics of IndieStarter funding.',
-      report_title: 'Monthly statistics',
+      report_title: 'Funds Report',
       summary: summary,
       content: content,
       capitalize: capitalize
