@@ -10,6 +10,8 @@ const capitalize = require('capitalize');
 const router = express.Router();
 
 var username = '';
+var errorMessage = '';
+
 
 router.get('/', function(req, res) {
   let categoryObs = Rx.Observable.fromPromise(queryExecuter.getCategories());
@@ -22,8 +24,10 @@ router.get('/', function(req, res) {
       res.render('pages/main', {
         username: username,
         categories: categories,
-        projects: projects
+        projects: projects,
+        error: errorMessage
       });
+      errorMessage = '';
     },
     (error) => {
       console.log(error);
@@ -48,8 +52,10 @@ router.get('/projects', function(req, res) {
     res.render('pages/search', {
       username: username,
       params: params,
-      projects : projects
+      projects : projects,
+      error: errorMessage
     });
+    errorMessage = '';
   });
 });
 
@@ -68,8 +74,10 @@ router.get('/projects/add', function(req, res) {
       categories: results.rows,
       project: {},
       formAction: '/projects',
-      formMethod: 'post'
+      formMethod: 'post',
+      error: errorMessage
     });
+    errorMessage = '';
   });
 });
 
@@ -97,8 +105,10 @@ router.get('/projects/:id', function(req, res) {
       percent_funded: parseFloat(parseFloat(result.amount_funded) / parseFloat(result.amount_sought) * 100).toFixed(2),
       owner: result.owner,
       owner_country: result.owner_country,
-      owner_description: result.owner_description
+      owner_description: result.owner_description,
+      error: errorMessage
     });
+    errorMessage = '';
   });
 });
 
@@ -125,15 +135,19 @@ router.get('/projects/:id/edit', function(req, res) {
       project: project,
       formAction: '/projects/' + id + '/update',
       formMethod: 'post',
-      dateFormat: ( date => moment(date).format('YYYY-MM-DD') )
+      dateFormat: ( date => moment(date).format('YYYY-MM-DD') ),
+      error: errorMessage
     });
+    errorMessage = '';
   });
 });
 
 router.get('/my-projects', function(req, res) {
   res.render('pages/myProjects', {
     username: username,
+    error: errorMessage
   });
+  errorMessage = '';
 });
 
 /*  ============================================================
@@ -226,9 +240,13 @@ router.post('/projects/:id/update', function (req, res, next) {
 router.post('/login', function(req, res, next) {
   var promise = queryExecuter.getAccount(req.body.username);
   promise.then(results => {
-    if (results.rows.length > 0) username = req.body.username;
+    if (results.rows.length > 0) {
+      username = results.rows[0].username;
+    } else {
+      errorMessage = 'Your username is not registered.';
+    }
+    res.redirect(req.get('referer'));
   });
-  res.redirect(req.get('referer'));
 });
 
 router.post('/logout', function(req, res, next) {
@@ -251,7 +269,9 @@ router.get('/featured', function(req, res, next) {
   promise.then(results => {
     //res.redirect(req.get('referer'));
     //Return the array of results here
+    error: errorMessage
   });
+  errorMessage = '';
 });
 
 
@@ -269,8 +289,10 @@ router.get('/reports/funds', (req, res) => {
       reportTitle: 'Funds Report',
       summary: summary,
       content: content,
-      capitalize: capitalize
+      capitalize: capitalize,
+      error: errorMessage
     });
+    errorMessage = '';
   });
 });
 
@@ -286,8 +308,10 @@ router.get('/reports/projects', (req, res) => {
       reportTitle: 'Projects Report',
       summary: summary,
       content: content,
-      capitalize: capitalize
+      capitalize: capitalize,
+      error: errorMessage
     });
+    errorMessage = '';
   });
 });
 
