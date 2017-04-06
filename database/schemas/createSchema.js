@@ -42,7 +42,10 @@ const fundsQuery =
         'amount DECIMAL CHECK(amount > 0),' +
         'time DATE NOT NULL' +
     ');';
+const backerType = 
+    'CREATE TYPE backer_type as ('  + 
+        'username text, id text, project integer, account integer, amount integer, time date' +
+    ');';
 
-
-dbutils.executeQueriesInOrder(categoryQuery, accountQuery, projectQuery, fundsQuery)
+dbutils.executeQueriesInOrder(categoryQuery, accountQuery, projectQuery, fundsQuery, backerType)
     .then( () => console.log("Make tables done!") );
