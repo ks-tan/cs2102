@@ -9,7 +9,8 @@
     "start": "nodemon app.js",
     "fixtures": "node database/fixtures/all.js",
     "droptables": "node database/schemas/dropTables.js",
-    "maketables": "node database/schemas/createSchema.js"
+    "maketables": "node database/schemas/createSchema.js",
+    "resetdb": "npm run droptables && npm run maketables && npm run fixtures"
   },
   "keywords": [],
   "author": "",
