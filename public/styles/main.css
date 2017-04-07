@@ -52,6 +52,8 @@ grey: #DCDEDD */
 
   .projectcard-content {
     padding: 20px;
+    height: 100%;
+    overflow: hidden;
   }
   .project-title {
     font-size: 16px;

@@ -34,7 +34,8 @@
             <li><a type="button" data-toggle="modal" data-target="#loginModal">LOGIN</a></li>
             <li><a type="button" data-toggle="modal" data-target="#signupModal">SIGN UP</a></li>
           <% } else { %>
-            <li><form action="/logout" method="POST"><button type="submit">LOGOUT</button></form></li>
+            <li><a href="/my-projects">My Projects</a></li>
+            <li><a role="button" href="/logout"><span class="glyphicon glyphicon-log-out"></span>&nbsp;LOGOUT</a></li>
           <% } %>
         </ul>
     </div>

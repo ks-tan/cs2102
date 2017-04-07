@@ -116,6 +116,10 @@ exports.getFeaturedProjects = function (numProjects) {
     return executeAndLog(queryStatements.GET_FEATURED_PROJECTS, numProjects);
 }
 
+exports.getProjectByUser = function(username) {
+    return executeAndLog(queryStatements.GET_PROJECT_BY_USER, [username]);
+}
+
 
 /* Statistics Module */
 
@@ -134,3 +138,4 @@ exports.getProjectStatsSummary = function () {
 exports.getProjectStatsContent = function () {
     return executeAndLog(statsQueryStatements.PROJECT_STATS_CONTENT);
 }
+

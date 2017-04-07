@@ -7,7 +7,7 @@
 */
 
 .project-add {
-	font-size: 30px;
+	font-size: 20px;
 	position: relative;
 	float: left;
 	top: 50%;
@@ -15,3 +15,6 @@
 	transform: translate(-50%, -50%);
 }
 
+.myproject-container {
+  padding-top: 40px;
+}

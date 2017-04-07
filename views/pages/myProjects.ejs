@@ -7,33 +7,28 @@
 </head>
 <body>
   <% include ../partials/navbar %>
-  <div class = "container">
+  <div class = "container myproject-container">
+  	<div class="section-title">My Projects</div>
   	<div class="row">
-			<a class="col-md-4" href="/projects/1">
-			  	<div class="projectcard">
+  		<% projects.forEach(function(project) { %>
+			<div class="col-md-3">
+			  	<div class="projectcard" onclick="openProject(<%= project.id %>)">
 			  		<div class="projectcard-content">
-			  			<div class="project-title">Test Project</div>
-			  			<div class="project-owner">Tester 123</div>
-			  			<div class="project-description">Test test test test</div>
+			  			<div class="project-title"><%= project.title %></div>
+			  			<div class="project-owner"><%= project.owner %></div>
+			  			<div class="project-description"><%= project.description %></div>
 			  		</div>
 			  	</div>
-			  </a>
-			  <a class="col-md-4" href="/projects/2">
+			  </div>
+			  <% }) %>
+				<a class="col-md-3" href="/projects/add">
 			  	<div class="projectcard">
-			  		<div class="projectcard-content">
-			  			<div class="project-title">Test Project</div>
-			  			<div class="project-owner">Tester 123</div>
-			  			<div class="project-description">Test test test test</div>
-			  		</div>
-			  	</div>
-			  </a>
-				<a class="col-md-4" href="/projects/add">
-			  	<div class="projectcard">
-			 			<div class="project-add">+ new project</div> 		
+			 			<div class="project-add"><span class="glyphicon glyphicon-plus"></span> New Project</div>
 			  	</div>
 			  </a>
   	</div>
   </div>
   <% include ../partials/scripts %>
+  <script src="/scripts/main.js"></script>
 </body>
 </html>

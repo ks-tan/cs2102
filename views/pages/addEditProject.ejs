@@ -7,12 +7,10 @@
 </head>
 <body>
     <% include ../partials/navbar %>
-    <br><br><br><br>
+    <br>
   	<div class="container">
-	  	<div class="row">
-	  		<div class="title col-md-9"><%= title %></div>
-	  	</div>
-	  	<div class = "row">
+	  	<div class="section-title"><%= title %></div>
+	  	<div class = "projectform-body">
 		  	<form action="<%= formAction %>" method="<%= formMethod %>">
 		  		<div class="form-group">
 					<label>Title</label>
@@ -51,16 +49,20 @@
 					<input class="form-control" type="number" placeholder="0" name="amount_sought" value=<%= project.amount_sought %>></input>
 				</div>
 				<div class="form-group">
-					<label>Owner Account ID` [Note: This is a placeholder]</label>
-					<input class="form-control" type="text" name="owner_account" value="<%= project.owner_account%>"></input>
+					<label>Owner Username</label>
+					<% if(state==='add') { %>
+					<input class="form-control" type="text" name="owner_account" value="<%= username %>" readonly></input>
+					<% } else { %>
+					<input class="form-control" type="text" name="owner_account" value="<%= project.owner_account%>" readonly></input>
+					<% } %>
 				</div>
-				
+
 				<% if (project.id == null) { %>
-					<button type="submit" class="btn">Publish</button>
+					<button type="submit" class="btn btn-success">Publish</button>
 				<% } else { %>
-					<button type="submit" class="btn">Update Project</button>
+					<button type="submit" class="btn btn-primary">Update Project</button>
 				<% } %>
-				
+
 			</form>
 		</div>
 	</div>

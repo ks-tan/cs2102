@@ -75,6 +75,8 @@ router.get('/projects/add', function(req, res) {
       project: {},
       formAction: '/projects',
       formMethod: 'post',
+      dateFormat: ( date => moment(date).format('YYYY-MM-DD') ),
+      state: 'add',
       error: errorMessage
     });
     errorMessage = '';
@@ -136,6 +138,7 @@ router.get('/projects/:id/edit', function(req, res) {
       formAction: '/projects/' + id + '/update',
       formMethod: 'post',
       dateFormat: ( date => moment(date).format('YYYY-MM-DD') ),
+      state: 'edit',
       error: errorMessage
     });
     errorMessage = '';
@@ -143,11 +146,16 @@ router.get('/projects/:id/edit', function(req, res) {
 });
 
 router.get('/my-projects', function(req, res) {
-  res.render('pages/myProjects', {
-    username: username,
-    error: errorMessage
+  console.log('username' , username);
+  queryExecuter.getProjectByUser(username).then(result => {
+    let projects = result.rows;
+    res.render('pages/myProjects', {
+      projects: projects,
+      username: username,
+      error: errorMessage
+    });
+    errorMessage = '';
   });
-  errorMessage = '';
 });
 
 /*  ============================================================
@@ -249,7 +257,7 @@ router.post('/login', function(req, res, next) {
   });
 });
 
-router.post('/logout', function(req, res, next) {
+router.get('/logout', function(req, res, next) {
   if (username !== "") username = "";
   res.redirect(req.get('referer'));
 });
